@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34928.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfessorOfTheYear", "ProfessorOfTheYear\ProfessorOfTheYear\ProfessorOfTheYear.csproj", "{EC15C962-1DB0-48B6-A56C-8F054471542F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProfessorOfTheYear.Client", "ProfessorOfTheYear\ProfessorOfTheYear.Client\ProfessorOfTheYear.Client.csproj", "{6F80C013-D819-4B0B-B793-40F83E63506F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC15C962-1DB0-48B6-A56C-8F054471542F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC15C962-1DB0-48B6-A56C-8F054471542F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC15C962-1DB0-48B6-A56C-8F054471542F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC15C962-1DB0-48B6-A56C-8F054471542F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F80C013-D819-4B0B-B793-40F83E63506F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F80C013-D819-4B0B-B793-40F83E63506F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F80C013-D819-4B0B-B793-40F83E63506F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F80C013-D819-4B0B-B793-40F83E63506F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9B55E474-7747-4375-A62D-4E781AA38DE6}
+	EndGlobalSection
+EndGlobal
