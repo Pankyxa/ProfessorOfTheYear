@@ -2,10 +2,12 @@ body {
     font-family: Inter, sans-serif;
     line-height: 1;
     font-weight: 300;
+    margin: 66px 300px 0; /* потом сделать адаптивным */
+    padding: 0;
 }
 
-main {
-    margin-top: 66px;
+.container {
+    padding: 0;
 }
 
 #blazor-error-ui {
