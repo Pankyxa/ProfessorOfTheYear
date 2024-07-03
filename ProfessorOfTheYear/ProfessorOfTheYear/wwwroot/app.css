@@ -1,15 +1,11 @@
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: Inter, sans-serif;
+    line-height: 1;
+    font-weight: 300;
 }
 
 a, .btn-link {
     color: #006bb7;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -48,4 +44,16 @@ h1:focus {
 
 .darker-border-checkbox.form-check-input {
     border-color: #929292;
+}
+
+/*Стиль для кнопок в навигации*/
+.nav-item .btn-outline-light { /*Стиль для кнопок в навигации*/
+    font-size: 20px; 
+    font-weight: 500; 
+    border: 2px solid #fff;
+}
+
+.nav-item .btn-icon {
+    font-size: 23px; 
+    border: none;
 }

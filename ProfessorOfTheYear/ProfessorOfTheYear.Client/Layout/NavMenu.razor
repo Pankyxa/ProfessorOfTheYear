@@ -33,8 +33,7 @@
                             Type="ButtonType.Link" 
                             Color="ButtonColor.Light" 
                             Outline="true" 
-                            To="Account/Manage"
-                            style="font-size: 20px; font-weight: 500; border: 2px solid #fff;"> @* вынести стиль в css файл нормально *@
+                            To="Account/Manage" >
                                 <Icon Name="IconName.Person" /> Профиль
                         </Button>
                     </div>
@@ -44,7 +43,7 @@
                             Color="ButtonColor.Light" 
                             Outline="true" 
                             To="#"
-                            style="font-size: 23px; border: none;">
+                            Class="btn-icon">
                                 <Icon Name="IconName.Bell" /> @* Кнопка уведомлений, надо изменить ссылку*@
                         </Button>
                     </div>
@@ -55,8 +54,8 @@
                             <Button 
                                 Type="ButtonType.Submit" 
                                 Color="ButtonColor.Light" 
-                                Outline="true" 
-                                style="font-size: 23px; border: none;">
+                                Outline="true"
+                                Class="btn-icon">
                                     <Icon Name="IconName.BoxArrowRight" /> @* Кнопка выхода из аккаунта *@
                             </Button>
                         </form>
@@ -68,8 +67,7 @@
                             Type="ButtonType.Link" 
                             Color="ButtonColor.Light" 
                             Outline="true" 
-                            To="Account/Register"
-                            style="font-size: 20px; font-weight: 500; border: 2px solid #fff;">
+                            To="Account/Register" >
                                 <span class="bi bi-person-nav-menu" aria-hidden="true"></span> Зарегистрироваться //изменить span на Icon
                         </Button>
                      </div> //кнопка регистрации, на данный момент на страницу регистрации можно попасть через ссылки внутри страницы Account/Login *@
@@ -78,10 +76,9 @@
                             Type="ButtonType.Link" 
                             Color="ButtonColor.Light" 
                             Outline="true" 
-                            To="Account/Login"
-                            style="font-size: 20px; font-weight: 500; border: 2px solid #fff;">
+                            To="Account/Login" >
                                 <Icon Name="IconName.BoxArrowInRight" /> Войти
-                        </Button>
+                        </Button> 
                     </div>
                 </NotAuthorized>
             </AuthorizeView>
