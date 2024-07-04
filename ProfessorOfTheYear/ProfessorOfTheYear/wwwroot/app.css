@@ -57,3 +57,24 @@ h1:focus {
     font-size: 23px; 
     border: none;
 }
+
+.circle-stage {
+    display: flex;
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    background: #7A78FC;
+    align-items: center;
+}
+
+.circle-stage-number {
+    padding-left: 5vh;
+    font-size: 200px;
+    color: #fff;
+}
+
+.page-points {
+    padding: 1.5vw;
+    border-bottom: 1px solid #D0D0D0;
+    border-top: 1px solid #D0D0D0;
+}
