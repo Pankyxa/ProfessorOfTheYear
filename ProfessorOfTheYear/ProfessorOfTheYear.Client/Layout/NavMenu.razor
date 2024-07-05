@@ -1,15 +1,16 @@
 ﻿@implements IDisposable
 
+@rendermode InteractiveServer
 @inject NavigationManager NavigationManager
 
 <nav class="navbar navbar-expand-md fixed-top">
     <div class="container"> 
-        <a class="navbar-brand" href="/">
+        <a href="/">
             <img class="min-logo" src="img/white-min-logo.png">
         </a>
         <button class="navbar-toggler @NavButtonCssClass" type="button" aria-controls="navbarCollapse"
             aria-label="Toggle navigation" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
+            <Icon Name="IconName.List" />
         </button>
         <div class="collapse navbar-collapse @NavBarCssClass justify-content-between" id="navbarCollapse" @onclick="ToggleNavMenu">
             <ul class="navbar-nav nav-underline">
@@ -31,8 +32,9 @@
                                 Type="ButtonType.Link" 
                                 Color="ButtonColor.Light" 
                                 Outline="true" 
-                                To="Account/Manage" >
-                                    <Icon Name="IconName.Person" /> Профиль
+                                To="Account/Manage" 
+                                Class="btn-icon" >
+                                    <Icon Name="IconName.Person" />
                             </Button>
                         </div>
                         <div class="nav-item">
@@ -77,8 +79,8 @@
 </nav>
 
 @code {
-    private bool collapseNavMenu = true;
     private string? currentUrl;
+    private bool collapseNavMenu = true;
     private string? NavBarCssClass => collapseNavMenu ? null : "show";
     private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
 

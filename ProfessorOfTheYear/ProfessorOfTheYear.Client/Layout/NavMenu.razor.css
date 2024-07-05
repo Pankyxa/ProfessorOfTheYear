@@ -1,35 +1,7 @@
-.navbar, .navbar-expand-md { /* потом сделать адаптивным */
-    background-color: #1B51BA; 
-    font-size: 20px;
-    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
-}
-
-.navbar-brand {
-    margin: 0; 
-    padding: 0;
-}
-
-.navbar-nav { /* потом сделать адаптивным */
-    padding: 0;
-}
-
 .navbar {
+    background-color: #1B51BA; 
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
     --bs-navbar-color: #fff;
     --bs-navbar-hover-color: #fff;
     --bs-navbar-active-color: #fff;
-}
-
-.nav-underline { /* потом сделать адаптивным */
-    margin: 0 40px;
-    --bs-nav-underline-gap: 40px;
-}
-
-.nav-buttons {
-    gap: 5px;
-    padding: 0;
-}
-
-.min-logo { /* потом сделать адаптивным */
-    width: 168px; 
-    height: 40px;
 }
