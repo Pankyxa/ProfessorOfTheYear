@@ -59,3 +59,71 @@ h1:focus {
     font-size: 23px; 
     border: none;
 }
+
+
+/*Классы для разметки страниц*/
+.block-group {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.block-title {
+    text-align: left;
+    border-style: solid;
+    border-color: #d0d0d0;
+    border-width: 2px 0px 2px 0px;
+    padding: 30px 20px 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.block-title-text {
+    color: #000000;
+    text-align: left;
+    font-family: "Inter-ExtraBold", sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    position: relative;
+    align-self: stretch;
+}
+
+.block-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.block-content-text {
+    text-align: left;
+    position: relative;
+    align-self: stretch;
+}
