@@ -17,3 +17,14 @@
     --bs-navbar-hover-color: #fff;
     --bs-navbar-active-color: #fff;
 }
+
+@media (max-width: 768px) {
+    .nav-underline { /*Стиль для кнопок в навигации*/
+        text-align: center;
+        margin: 0;
+    }
+
+    .nav-buttons {
+       justify-content: center; 
+    }
+}
