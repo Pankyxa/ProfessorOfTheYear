@@ -1,15 +1,9 @@
 html, body {
     font-family: Inter, sans-serif;
     line-height: 1;
-    font-weight: 300;
-}
-
-a, .btn-link {
-    color: #006bb7;
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    font-weight: 400;
+    font-size: 20px;
+    overflow-x: hidden;
 }
 
 .content {
@@ -46,16 +40,156 @@ h1:focus {
     border-color: #929292;
 }
 
-/*Стиль для кнопок в навигации*/
-.nav-item .btn-outline-light { /*Стиль для кнопок в навигации*/
+
+
+
+
+/* СТИЛИ ДЛЯ НАВИГАЦИИ (ВЫТАЩИТЬ В ОТДЕЛЬНЫЙ CSS) */
+.nav-item {
     font-size: 20px; 
-    font-weight: 500; 
-    border: 2px solid #fff;
+}
+
+.nav-item .btn-outline-light, .navbar-toggler { /*Стиль для кнопок в навигации*/
+    font-size: 20px; 
+    font-weight: 500;
+    border-color: #fff;
 }
 
 .nav-item .btn-icon {
     font-size: 23px; 
     border: none;
+}
+
+.nav-underline {
+    margin: 0 40px;
+    gap: 40px;
+}
+
+.min-logo {
+    width: 168px; 
+    height: auto;
+}
+
+.nav-buttons {
+    flex-direction: row;
+    gap: 5px;
+    padding: 0;
+}
+
+@media (max-width: 1200px) {   
+    .nav-item {
+        font-size: 16px; 
+    }
+    
+    .nav-item .btn-outline-light { /*Стиль для кнопок в навигации*/
+        font-size: 16px; 
+    }
+    
+    .nav-item .btn-icon {
+        font-size: 18px; 
+    }
+    
+    .nav-underline {
+        margin: 0 20px;
+        gap: 15px;
+    }
+    
+    .min-logo {
+        width: 140px; 
+    }
+
+    .nav-buttons {
+        gap: 3px;
+    }
+}
+
+@media (max-width: 992px) {      
+    .nav-underline {
+        margin: 0 10px;
+        gap: 7px;
+    }
+    
+    .min-logo {
+        width: 130px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-underline { /*Стиль для кнопок в навигации*/
+        text-align: center;
+        margin: 0;
+    }
+
+    .nav-buttons {
+       justify-content: center; 
+    }
+}
+
+/*Классы для разметки страниц*/
+.block-group {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.block-title {
+    text-align: left;
+    border-style: solid;
+    border-color: #d0d0d0;
+    border-width: 2px 0px 2px 0px;
+    padding: 30px 20px 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.block-title-text {
+    color: #000000;
+    text-align: left;
+    font-family: "Inter-ExtraBold", sans-serif;
+    font-size: 48px;
+    font-weight: 800;
+    position: relative;
+    align-self: stretch;
+}
+
+.block-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.block-content-text {
+    text-align: left;
+    position: relative;
+    align-self: stretch;
 }
 
 .circle-stage {
