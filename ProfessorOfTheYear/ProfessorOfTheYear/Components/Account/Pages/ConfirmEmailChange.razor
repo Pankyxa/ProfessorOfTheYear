@@ -1,5 +1,7 @@
 ﻿@page "/Account/ConfirmEmailChange"
 
+@layout ProfessorOfTheYear.Client.Layout.AuthLayout
+
 @using System.Text
 @using Microsoft.AspNetCore.Identity
 @using Microsoft.AspNetCore.WebUtilities
@@ -9,11 +11,13 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject IdentityRedirectManager RedirectManager
 
-<PageTitle>Confirm email change</PageTitle>
+<PageTitle>Подтвердите изменение электронной почты</PageTitle>
 
-<h1>Confirm email change</h1>
+<div class="form-layout">
+    <p class="form-title">Подтвердите изменение электронной почты</p>
 
-<StatusMessage Message="@message" />
+    <StatusMessage Message="@message" />
+</div>
 
 @code {
     private string? message;
