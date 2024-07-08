@@ -1,0 +1,22 @@
+﻿.page-layout {
+    width: 100%;
+}
+
+.page-layout-content {
+    height: 100vh;
+    padding: 1rem !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.background {
+    width: 100vw;
+    background-image: url("img/IntroBackground.png");
+    background-color: #084ea3;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
