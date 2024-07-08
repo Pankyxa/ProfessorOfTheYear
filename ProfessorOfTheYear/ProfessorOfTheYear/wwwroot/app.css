@@ -167,7 +167,7 @@ h1:focus {
     color: #000000;
     text-align: left;
     font-family: "Inter-ExtraBold", sans-serif;
-    font-size: 48px;
+    font-size: 40px;
     font-weight: 800;
     position: relative;
     align-self: stretch;
@@ -190,4 +190,22 @@ h1:focus {
     text-align: left;
     position: relative;
     align-self: stretch;
+}
+
+
+@media (max-width: 1200px) {
+    .block-title-text {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .block-title-text {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .block-content-text {
+        text-align: center;
+    }
 }

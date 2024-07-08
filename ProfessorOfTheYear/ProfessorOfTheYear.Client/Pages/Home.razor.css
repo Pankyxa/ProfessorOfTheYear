@@ -39,8 +39,33 @@
 
 .block-content-photo {
     background: #d0d0d0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     align-self: stretch;
     flex-shrink: 0;
-    height: 300px;
+    height: 600px;
     position: relative;
+}
+
+@media (max-width: 1200px) {
+    .intro-title {
+        font-size: 80px;
+    }
+
+    .intro-text {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 992px) {
+    .intro-title {
+        font-size: 65px;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-title {
+        font-size: 44px;
+    }
 }
