@@ -1,7 +1,5 @@
 ﻿@page "/Account/LoginWith2fa"
 
-@layout ProfessorOfTheYear.Client.Layout.AuthLayout
-
 @using System.ComponentModel.DataAnnotations
 @using Microsoft.AspNetCore.Identity
 @using ProfessorOfTheYear.Data
@@ -32,13 +30,14 @@
         <InputCheckbox @bind-Value="Input.RememberMachine" class="darker-border-checkbox form-check-input" /> Запомнить это устройство
     </div>
     <div class="form-buttons">
-        <Button Type="ButtonType.Submit"
-                Color="ButtonColor.Primary">
-            Войти
+        <Button 
+            Type="ButtonType.Submit"
+            Color="ButtonColor.Primary">
+                Войти
         </Button>
     </div>
     <div class="form-links">
-        Нет доступа к вашему устройству аутентификации? Вы можете
+        Нет доступа к устройству аутентификации? Вы можете
         <a href="Account/LoginWithRecoveryCode?ReturnUrl=@ReturnUrl">войти с помощью кода восстановления</a>.
     </div>
 </EditForm>
@@ -76,7 +75,7 @@
         }
         else if (result.IsLockedOut)
         {
-            Logger.LogWarning("У пользователя с ID '{UserId}' заблокирован аккаунт.", userId);
+            Logger.LogWarning("Аккаунт пользователя с ID '{UserId}' заблокирован.", userId);
             RedirectManager.RedirectTo("Account/Lockout");
         }
         else
