@@ -5,8 +5,13 @@ using ProfessorOfTheYear.Client.Pages;
 using ProfessorOfTheYear.Components;
 using ProfessorOfTheYear.Components.Account;
 using ProfessorOfTheYear.Data;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
+using DotNetEnv;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Загрузить переменные окружения из файла .env
+Env.Load();
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
@@ -25,9 +30,10 @@ builder.Services.AddAuthentication(options =>
     })
     .AddIdentityCookies();
 
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ??
+                       throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseNpgsql(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
