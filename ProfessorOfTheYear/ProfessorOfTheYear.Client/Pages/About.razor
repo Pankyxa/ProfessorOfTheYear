@@ -140,6 +140,14 @@
     <div class="w-50" style="background-color: #D0D0D0;"></div>
 </div>
 
+<div class="block-title" style="margin-bottom: 1rem;">
+    <div class="block-title-text">
+        Участники
+    </div>
+</div>
+@* карусель *@
+<ProfessorOfTheYear.Client.Layout.Carousel.Carousel />
+
 @code {
     private DateTime targetDate = new DateTime(2024, 11, 11); // Целевая дата
 
@@ -152,13 +160,13 @@
     protected override void OnInitialized()
     {
 
-        // Создайте Timer с интервалом 1 секунда
+        // Timer с интервалом 1 секунда
         timer = new Timer(1000);
 
-        // Подпишитесь на событие Elapsed
+        // событие Elapsed
         timer.Elapsed += UpdateCountdown;
 
-        // Запустите таймер
+        // Запуск таймера
         timer.Start();
     }
 
