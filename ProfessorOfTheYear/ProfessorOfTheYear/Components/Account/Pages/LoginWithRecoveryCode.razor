@@ -79,7 +79,7 @@
 
     private sealed class InputModel
     {
-        [Required]
+        [Required(ErrorMessage = "Необходимо ввести код восстановления")]
         [DataType(DataType.Text)]
         [Display(Name = "Код восстановления")]
         public string RecoveryCode { get; set; } = "";

@@ -18,10 +18,9 @@
     <div class="col-md-6">
         <EditForm Model="Input" FormName="profile" OnValidSubmit="OnValidSubmitAsync" method="post">
             <DataAnnotationsValidator />
-            <ValidationSummary class="text-danger" role="alert" />
 
             <div class="form-input mb-3">
-                <input type="text" value="@username" class="form-control" placeholder="Логин" disabled />
+                <InputText @bind-Value="username" class="form-control" placeholder="Логин" disabled></InputText>
             </div>
             <div class="form-input mb-3">
                 <ValidationMessage For="() => Input.PhoneNumber" class="text-danger" />
@@ -74,7 +73,7 @@
 
     private sealed class InputModel
     {
-        [Phone]
+        [Phone(ErrorMessage = "Введен некорректный номер телефона")]
         [Display(Name = "Номер телефона")]
         public string? PhoneNumber { get; set; }
     }

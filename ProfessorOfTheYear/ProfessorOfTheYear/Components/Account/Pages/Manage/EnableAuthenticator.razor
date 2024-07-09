@@ -169,7 +169,7 @@ else
     private sealed class InputModel
     {
         [Required]
-        [StringLength(7, ErrorMessage = "Длина {0} должна составлять не менее {2} и не более {1} символов соответственно.", MinimumLength = 6)]
+        [StringLength(7, ErrorMessage = "Длина кода должна составлять не менее {2} и не более {1} символов.", MinimumLength = 6)]
         [DataType(DataType.Text)]
         [Display(Name = "Код подтверждения")]
         public string Code { get; set; } = "";

@@ -187,8 +187,8 @@
 
     private sealed class InputModel
     {
-        [Required]
-        [EmailAddress]
+        [Required(ErrorMessage = "Необходимо указать адрес электронной почты")]
+        [EmailAddress(ErrorMessage = "Указан некорректный адрес электронной почты")]
         public string Email { get; set; } = "";
     }
 }

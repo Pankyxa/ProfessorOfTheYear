@@ -87,8 +87,8 @@
 
     private sealed class InputModel
     {
-        [Required]
-        [StringLength(7, ErrorMessage = "Длина {0} должна составлять не менее {2} и не более {1} символов соответственно.", MinimumLength = 6)]
+        [Required(ErrorMessage = "Необходимо ввести код аутентифмкации")]
+        [StringLength(7, ErrorMessage = "Длина кода должна составлять не менее {2} и не более {1} символов.", MinimumLength = 6)]
         [DataType(DataType.Text)]
         [Display(Name = "Код аутентификации")]
         public string? TwoFactorCode { get; set; }
