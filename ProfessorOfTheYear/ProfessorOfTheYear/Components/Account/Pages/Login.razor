@@ -60,7 +60,7 @@
 
 @* <div class="col-md-6 col-md-offset-2">
     <section>
-        <h3>Use another service to log in.</h3>
+        <h3>Использовать другие сервисы для входа.</h3>
         <hr />
         <ExternalLoginPicker />
     </section>
@@ -94,7 +94,7 @@
         var result = await SignInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
         if (result.Succeeded)
         {
-            Logger.LogInformation("User logged in.");
+            Logger.LogInformation("Пользователь вошел в систему.");
             RedirectManager.RedirectTo(ReturnUrl);
         }
         else if (result.RequiresTwoFactor)
@@ -105,12 +105,12 @@
         }
         else if (result.IsLockedOut)
         {
-            Logger.LogWarning("User account locked out.");
+            Logger.LogWarning("Аккаунт пользователя заблокирован.");
             RedirectManager.RedirectTo("Account/Lockout");
         }
         else
         {
-            errorMessage = "Error: Invalid login attempt.";
+            errorMessage = "Ошибка: Неудачная попытка входа в систему.";
         }
     }
 
@@ -124,7 +124,7 @@
         [DataType(DataType.Password)]
         public string Password { get; set; } = "";
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Запомнить меня?")]
         public bool RememberMe { get; set; }
     }
 }

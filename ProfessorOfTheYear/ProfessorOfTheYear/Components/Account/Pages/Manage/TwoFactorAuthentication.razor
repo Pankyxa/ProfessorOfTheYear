@@ -95,7 +95,7 @@ else
         await SignInManager.ForgetTwoFactorClientAsync();
 
         RedirectManager.RedirectToCurrentPageWithStatus(
-            "The current browser has been forgotten. When you login again from this browser you will be prompted for your 2fa code.",
+            "Автоматическая аутентификация в этом браузере была отключена. При повторном входе в систему вам будет предложено повторно ввести код двуфакторной аутентификации.",
             HttpContext);
     }
 }

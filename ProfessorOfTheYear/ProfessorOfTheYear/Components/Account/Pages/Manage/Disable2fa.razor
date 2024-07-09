@@ -42,7 +42,7 @@
 
         if (HttpMethods.IsGet(HttpContext.Request.Method) && !await UserManager.GetTwoFactorEnabledAsync(user))
         {
-            throw new InvalidOperationException("Cannot disable 2FA for user as it's not currently enabled.");
+            throw new InvalidOperationException("Не удается отключить двуфакторную аутентификацию для пользователя, так как в данный момент она не включена.");
         }
     }
 
@@ -51,14 +51,14 @@
         var disable2faResult = await UserManager.SetTwoFactorEnabledAsync(user, false);
         if (!disable2faResult.Succeeded)
         {
-            throw new InvalidOperationException("Unexpected error occurred disabling 2FA.");
+            throw new InvalidOperationException("Произошла непредвиденная ошибка при отключении двуфакторной аутентификации.");
         }
 
         var userId = await UserManager.GetUserIdAsync(user);
-        Logger.LogInformation("User with ID '{UserId}' has disabled 2fa.", userId);
+        Logger.LogInformation("Пользователь с ID '{UserId}' отключил двуфакторную аутентификацию.", userId);
         RedirectManager.RedirectToWithStatus(
             "Account/Manage/TwoFactorAuthentication",
-            "2fa has been disabled. You can reenable 2fa when you setup an authenticator app",
+            "Двуфакторная аутентификация была отключена. Вы можете повторно включить её при настройке приложения для аутентификации",
             HttpContext);
     }
 }

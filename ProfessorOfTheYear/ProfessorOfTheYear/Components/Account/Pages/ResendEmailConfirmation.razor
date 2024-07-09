@@ -45,7 +45,7 @@
         var user = await UserManager.FindByEmailAsync(Input.Email!);
         if (user is null)
         {
-            message = "Verification email sent. Please check your email.";
+            message = "Письмо с подтверждением отправлено. Пожалуйста, проверьте свой адрес электронной почты.";
             return;
         }
 
@@ -57,7 +57,7 @@
             new Dictionary<string, object?> { ["userId"] = userId, ["code"] = code });
         await EmailSender.SendConfirmationLinkAsync(user, Input.Email, HtmlEncoder.Default.Encode(callbackUrl));
 
-        message = "Verification email sent. Please check your email.";
+        message = "Письмо с подтверждением отправлено. Пожалуйста, проверьте свой адрес электронной почты.";
     }
 
     private sealed class InputModel

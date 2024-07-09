@@ -50,7 +50,7 @@
     {
         // Ensure the user has gone through the username & password screen first
         user = await SignInManager.GetTwoFactorAuthenticationUserAsync() ??
-            throw new InvalidOperationException("Unable to load two-factor authentication user.");
+            throw new InvalidOperationException("Не удается загрузить двуфакторную аутентификацию пользователя.");
     }
 
     private async Task OnValidSubmitAsync()
@@ -63,18 +63,18 @@
 
         if (result.Succeeded)
         {
-            Logger.LogInformation("User with ID '{UserId}' logged in with a recovery code.", userId);
+            Logger.LogInformation("Пользователь с ID '{UserId}' вошел в систему с помощью кода восстановления.", userId);
             RedirectManager.RedirectTo(ReturnUrl);
         }
         else if (result.IsLockedOut)
         {
-            Logger.LogWarning("User account locked out.");
+            Logger.LogWarning("Аккаунт пользователя заблокирован.");
             RedirectManager.RedirectTo("Account/Lockout");
         }
         else
         {
-            Logger.LogWarning("Invalid recovery code entered for user with ID '{UserId}' ", userId);
-            message = "Error: Invalid recovery code entered.";
+            Logger.LogWarning("Неверный код восстановления введен для пользователя с ID '{UserId}' ", userId);
+            message = "Ошибка: Введен неверный код восстановления.";
         }
     }
 
@@ -82,7 +82,7 @@
     {
         [Required]
         [DataType(DataType.Text)]
-        [Display(Name = "Recovery Code")]
+        [Display(Name = "Код восстановления")]
         public string RecoveryCode { get; set; } = "";
     }
 }

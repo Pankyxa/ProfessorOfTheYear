@@ -53,7 +53,7 @@ else
         var isTwoFactorEnabled = await UserManager.GetTwoFactorEnabledAsync(user);
         if (!isTwoFactorEnabled)
         {
-            throw new InvalidOperationException("Cannot generate recovery codes for user because they do not have 2FA enabled.");
+            throw new InvalidOperationException("Не удается сгенерировать коды восстановления для пользователя, поскольку у него не включена двуфакторная аутентификация.");
         }
     }
 
@@ -61,8 +61,8 @@ else
     {
         var userId = await UserManager.GetUserIdAsync(user);
         recoveryCodes = await UserManager.GenerateNewTwoFactorRecoveryCodesAsync(user, 10);
-        message = "You have generated new recovery codes.";
+        message = "Вы сгенерировали новые коды восстановления.";
 
-        Logger.LogInformation("User with ID '{UserId}' has generated new 2FA recovery codes.", userId);
+        Logger.LogInformation("Пользователь с ID '{UserId}' сгенерировал новые коды восстановления.", userId);
     }
 }
