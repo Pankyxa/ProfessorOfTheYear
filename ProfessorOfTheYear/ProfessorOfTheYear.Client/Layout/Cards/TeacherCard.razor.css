@@ -10,9 +10,9 @@
   border-width: 1px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 0px;
   align-items: center;
-  justify-content: center;
   flex-shrink: 0;
   width: 320px;
   position: relative;
@@ -27,16 +27,6 @@
   position: relative;
   overflow: hidden;
 }
-
-.professor-avatar-2 {
-  background: #353463;
-  align-self: stretch;
-  flex-shrink: 0;
-  height: 313px;
-  position: relative;
-  overflow: hidden;
-}
-
 .description {
   padding: 20px;
   display: flex;
