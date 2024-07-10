@@ -130,7 +130,7 @@
         public string Email { get; set; } = "";
 
         [Required(ErrorMessage = "Необходимо ввести пароль")]
-        [StringLength(100, ErrorMessage = "Длина пароль должна составлять не менее {2} и не более {1} символов.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "Длина пароля должна составлять не менее {2} и не более {1} символов.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Пароль")]
         public string Password { get; set; } = "";
