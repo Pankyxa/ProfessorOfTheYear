@@ -78,7 +78,7 @@ namespace ProfessorOfTheYear.Components.Account
         {
             if (authenticationStateTask is null)
             {
-                throw new UnreachableException($"Authentication state not set in {nameof(OnPersistingAsync)}().");
+                throw new UnreachableException($"Состояние аутентификации не задано в {nameof(OnPersistingAsync)}().");
             }
 
             var authenticationState = await authenticationStateTask;

@@ -79,11 +79,11 @@ namespace Microsoft.AspNetCore.Routing
                 var user = await userManager.GetUserAsync(context.User);
                 if (user is null)
                 {
-                    return Results.NotFound($"Unable to load user with ID '{userManager.GetUserId(context.User)}'.");
+                    return Results.NotFound($"Ошибка загрузки пользователя с ID '{userManager.GetUserId(context.User)}'.");
                 }
 
                 var userId = await userManager.GetUserIdAsync(user);
-                downloadLogger.LogInformation("User with ID '{UserId}' asked for their personal data.", userId);
+                downloadLogger.LogInformation("Пользователь с ID '{UserId}' запросил свои персональные данные.", userId);
 
                 // Only include personal data for download
                 var personalData = new Dictionary<string, string>();
@@ -97,10 +97,10 @@ namespace Microsoft.AspNetCore.Routing
                 var logins = await userManager.GetLoginsAsync(user);
                 foreach (var l in logins)
                 {
-                    personalData.Add($"{l.LoginProvider} external login provider key", l.ProviderKey);
+                    personalData.Add($"Ключ внешнего входа {l.LoginProvider}", l.ProviderKey);
                 }
 
-                personalData.Add("Authenticator Key", (await userManager.GetAuthenticatorKeyAsync(user))!);
+                personalData.Add("Ключ аутентификации", (await userManager.GetAuthenticatorKeyAsync(user))!);
                 var fileBytes = JsonSerializer.SerializeToUtf8Bytes(personalData);
 
                 context.Response.Headers.TryAdd("Content-Disposition", "attachment; filename=PersonalData.json");
