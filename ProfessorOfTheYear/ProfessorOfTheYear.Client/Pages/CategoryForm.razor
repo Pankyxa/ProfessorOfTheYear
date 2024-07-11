@@ -1,0 +1,34 @@
+@page "/voting/category"
+@inject ProfessorsDataService pds
+@inject NavigationManager navigate
+
+<PageTitle>Голосование</PageTitle>
+
+<div class="block-title">
+    <div class="title-direction" >
+        <div class="block-title-text">Название категории</div>
+        <Icon Name="IconName.ArrowLeft" Size="IconSize.x2" />
+    </div>
+    <div class="block-content-text">
+        Выберите кандидата для голосования
+    </div>
+</div>
+
+<div class="page-content">
+    @for (int i = 0; i < pi!.Count(); i ++)
+    {
+        <div>
+            <ProfessorOfTheYear.Client.Layout.Cards.TeacherCard professorInfo="pi![i]" />
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public List<ProfessorInfo>? pi { get; set; }
+        
+    protected override async Task OnParametersSetAsync()
+    {
+        pi = await pds.GetAllProfessors();
+    }
+}

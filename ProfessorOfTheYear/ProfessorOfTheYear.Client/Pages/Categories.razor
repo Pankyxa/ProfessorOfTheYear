@@ -1,0 +1,27 @@
+@page "/voting"
+@inject NavigationManager navigate
+
+<PageTitle>Голосование</PageTitle>
+
+<div class="block-title">
+    <div class="block-title-text">
+        Категoрии голосования
+    </div>
+    <div class="block-content-text">
+        Выберите категорию, в которой хотели бы проголосовать
+    </div>
+</div>
+
+<div class="page-content">
+    @for (int i = 0; i < 3; i++) {
+        <div @onclick="NavigateToPage">
+            <ProfessorOfTheYear.Client.Layout.Cards.CategoryCard />
+        </div>
+    }
+</div>
+
+@code {
+    private void NavigateToPage() {
+        navigate.NavigateTo("/voting/category");
+    }
+}

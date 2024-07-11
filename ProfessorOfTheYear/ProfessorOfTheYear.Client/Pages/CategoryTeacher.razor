@@ -1,0 +1,75 @@
+@page "/voting/category/teacher"
+
+<PageTitle>Голосование</PageTitle>
+
+<div class="block-title">
+    <div class="title-direction" >
+        <div class="block-title-text">Петров Хасбулла Александрович</div>
+        <div class="text-direction">
+            <div class="div2">Количество голосов: 123</div>
+            <Icon Name="IconName.ArrowLeft" Size="IconSize.x2" />
+        </div>
+    </div>
+</div>
+
+<div class="block-info">
+  <div class="rightside">
+    <div class="content-title">Информация о преподавателе</div>
+    <div class="brief-info">
+      <div class="line">
+        <div class="place-of-work">
+          <div class="div2">Место работы</div>
+          <div class="div3">ТИУ, ВШЦТ</div>
+        </div>
+        <div class="job">
+          <div class="div2">Должность</div>
+          <div class="div3">Доцент</div>
+        </div>
+      </div>
+      <div class="line">
+        <div class="experience">
+          <div class="div2">Стаж</div>
+          <div class="div3">20 лет</div>
+        </div>
+        <div class="education">
+          <div class="div2">Образование</div>
+          <div class="div3">Высшее образование</div>
+        </div>
+      </div>
+      <div class="line">
+        <div class="academic-title">
+          <div class="div2">Учёное звание (при наличии)</div>
+          <div class="div3">Профессор</div>
+        </div>
+        <div class="academic-degree">
+          <div class="div2">Учёная степень (при наличии)</div>
+          <div class="div3">Кандидат технических наук</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="leftside">
+    <div class="photo"></div>
+    <Button class="btn btn-primary w-100">Проголосовать</Button>
+  </div>
+</div>
+
+<div class="block-about-yourself">
+    <div class="content-title">О себе</div>
+    <div class="block-content-text">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati magni aliquam labore recusandae suscipit tempore eos, id quam! Minima amet aliquam nihil asperiores facere, perferendis velit rem ducimus officia aspernatur!
+    </div>
+</div>
+
+<div class="block-about-yourself">
+    <div class="content-title">Достижения</div>
+    <div class="achieves">
+        @for (int i = 0; i < 6; i ++) {
+            <div class="achiev-card">
+                <div class="achiev-card-text">
+                    Организовала и провела свыше 40 студенческих научных конференций.
+                </div>
+            </div>
+        }
+    </div>
+</div>
