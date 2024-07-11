@@ -1,5 +1,9 @@
 body {
-    margin: 67px 0 0;       
+    margin: 67px 0 0;
+    min-height: calc(100vh - 67px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }  
 
 #blazor-error-ui {
