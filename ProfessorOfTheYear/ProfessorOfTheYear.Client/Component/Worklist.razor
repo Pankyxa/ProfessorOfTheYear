@@ -1,0 +1,121 @@
+﻿
+@*<input @bind="nameTextField" placeholder="Name" />
+<input type="number" @bind="valueTextField" placeholder="Value" />
+*@
+
+
+<style>
+    .adaptive-table {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .table-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .column-header {
+        font-weight: bold;
+        background-color: #f0f0f0;
+        padding: 5px;
+    }
+
+    .input-field {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+
+</style>
+
+<div class="adaptive-table">
+    <div class="table-container">
+        <h5>Монографии, учебники, учебные и учебно-методические пособия с грифами и без грифов УМО, Министерств РФ или государственных академий наук, изданные типографским способом за весь период научно-педагогической деятельности: </h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="column-header">Вид публикации</th>
+                    <th class="column-header">Название</th>
+                    <th class="column-header">Соавторы</th>
+                    <th class="column-header">Количество печатных листов</th>
+                    <th class="column-header">Наличие грифа</th>
+                    <th class="column-header">Издательство, год</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var model in models)
+                {
+                    <tr>
+                        <td><input @bind="model.PublicationType" class="input-field" placeholder="вид" /></td>
+                        <td><input @bind="model.PublicationName" class="input-field" placeholder="название" /></td>
+                        <td><input @bind="model.PublicationAutors" class="input-field" placeholder="соавторы" /></td>
+                        <td><input @bind="model.PublicationListCount" class="input-field" placeholder="количество" /></td>
+                        <td><input @bind="model.Publicationclassified" class="input-field" placeholder="наличие" /></td>
+                        <td><input @bind="model.PublicationYear" class="input-field" placeholder="год" /></td>
+                        <td>
+                            <Button Color="ButtonColor.Danger" @onclick="() => RemoveModel(model)">X</Button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<Button Color="ButtonColor.Primary" @onclick="AddOrUpdateModel"> Добавить </Button>
+<pre>@modelList</pre>
+
+@code {
+    private string nameTextField = "";
+    private string valueTextField = "";
+    private List<Model> models = new List<Model>
+    {
+        new Model { PublicationName = "Название1"},
+    };
+
+    private Model selectedModel = null;
+    private string modelList = "";
+
+    private void AddOrUpdateModel()
+    {
+        models.Add(new Model { PublicationName = "Название1" });
+        @*if (!string.IsNullOrEmpty(nameTextField) && !string.IsNullOrEmpty(valueTextField))
+        {
+            if (selectedModel == null)
+            {
+                models.Add(new Model { CourseName = nameTextField, Lectures = int.Parse(valueTextField) });
+            }
+            else
+            {
+                selectedModel.CourseName = nameTextField;
+                selectedModel.Lectures = int.Parse(valueTextField);
+                selectedModel = null;
+            }
+            ClearInputFields();
+        }*@
+    }
+
+    private void RemoveModel(Model model)
+    {
+        models.Remove(model);
+    }
+
+
+    private void ClearInputFields()
+    {
+        nameTextField = "";
+        valueTextField = "";
+    }
+
+    public class Model
+    {
+        public string PublicationType { get; set; }
+        public string PublicationName { get; set; }
+        public string PublicationAutors { get; set; }
+        public int PublicationListCount { get; set; }
+        public string Publicationclassified { get; set; }
+        public int PublicationYear { get; set; }
+    }
+}

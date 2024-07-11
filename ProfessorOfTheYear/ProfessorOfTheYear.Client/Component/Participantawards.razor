@@ -1,0 +1,118 @@
+﻿
+@*<input @bind="nameTextField" placeholder="Name" />
+<input type="number" @bind="valueTextField" placeholder="Value" />
+*@
+
+
+<style>
+    .adaptive-table {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .table-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .column-header {
+        font-weight: bold;
+        background-color: #f0f0f0;
+        padding: 5px;
+    }
+
+    .input-field {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+
+</style>
+
+<div class="adaptive-table">
+    <div class="table-container">
+        <h5>
+            Награждение премиями, наградами в области научно-педагогической деятельности городского, всероссийского или международного уровня (в том числе зарубежными), победы
+            в профессиональных конкурсах за весь период научно-педагогической деятельности:
+        </h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="column-header">Год</th>
+                    <th class="column-header">Название конкурса</th>
+                    <th class="column-header">Статус конкурса</th>
+                    <th class="column-header">Награда</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var model in models)
+                {
+                    <tr>
+                        <td><input @bind="model.awardyear" class="input-field" placeholder="год" /></td>
+                        <td><input @bind="model.awardname" class="input-field" placeholder="название" /></td>
+                        <td><input @bind="model.awardtype" class="input-field" placeholder="статус" /></td>
+                        <td><input @bind="model.awardcount" class="input-field" placeholder="награда" /></td>
+                        <td>
+                            <Button Color="ButtonColor.Danger" @onclick="() => RemoveModel(model)">X</Button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<Button Color="ButtonColor.Primary" @onclick="AddOrUpdateModel"> Добавить </Button>
+<pre>@modelList</pre>
+
+@code {
+    private string nameTextField = "";
+    private string valueTextField = "";
+    private List<Model> models = new List<Model>
+    {
+        new Model { awardname = "Название1"},
+    };
+
+    private Model selectedModel = null;
+    private string modelList = "";
+
+    private void AddOrUpdateModel()
+    {
+        models.Add(new Model { awardname = "Название1" });
+        @*if (!string.IsNullOrEmpty(nameTextField) && !string.IsNullOrEmpty(valueTextField))
+        {
+            if (selectedModel == null)
+            {
+                models.Add(new Model { CourseName = nameTextField, Lectures = int.Parse(valueTextField) });
+            }
+            else
+            {
+                selectedModel.CourseName = nameTextField;
+                selectedModel.Lectures = int.Parse(valueTextField);
+                selectedModel = null;
+            }
+            ClearInputFields();
+        }*@
+    }
+
+    private void RemoveModel(Model model)
+    {
+        models.Remove(model);
+    }
+
+
+    private void ClearInputFields()
+    {
+        nameTextField = "";
+        valueTextField = "";
+    }
+
+    public class Model
+    {
+        public int awardyear { get; set; }
+        public string awardname { get; set; }
+        public string awardtype { get; set; }
+        public string awardcount { get; set; }
+    }
+}

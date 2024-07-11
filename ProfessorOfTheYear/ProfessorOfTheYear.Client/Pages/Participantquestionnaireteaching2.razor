@@ -1,0 +1,97 @@
+﻿@page "/example"
+@rendermode InteractiveAuto
+
+<input @bind="nameTextField" placeholder="Name" />
+<input type="number" @bind="valueTextField" placeholder="Value" />
+
+<button class="btn btn-primary" @onclick="AddOrUpdateModel">@(selectedModel == null ? "New value" : "Save")</button>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var model in models)
+        {
+            <tr>
+                <td>@model.Name</td>
+                <td>@model.Value</td>
+                <td>
+                    <button class="btn btn-primary" @onclick="() => EditModel(model)">Edit</button>
+                    <button class="btn btn-danger" @onclick="() => RemoveModel(model)">Remove</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button class="btn btn-info" @onclick="ShowModels">Show Models</button>
+<pre>@modelList</pre>
+
+@code {
+    private string nameTextField = "";
+    private string valueTextField = "";
+    private List<Model> models = new List<Model>
+    {
+        new Model { Name = "Тест1", Value = 1 },
+        new Model { Name = "Тест2", Value = 2 }
+    };
+
+    private Model selectedModel = null;
+    private string modelList = "";
+
+    private void AddOrUpdateModel()
+    {
+        if (!string.IsNullOrEmpty(nameTextField) && !string.IsNullOrEmpty(valueTextField))
+        {
+            if (selectedModel == null)
+            {
+                models.Add(new Model { Name = nameTextField, Value = int.Parse(valueTextField) });
+            }
+            else
+            {
+                selectedModel.Name = nameTextField;
+                selectedModel.Value = int.Parse(valueTextField);
+                selectedModel = null;
+            }
+            ClearInputFields();
+        }
+    }
+
+    private void RemoveModel(Model model)
+    {
+        models.Remove(model);
+    }
+
+    private void EditModel(Model model)
+    {
+        selectedModel = model;
+        nameTextField = model.Name;
+        valueTextField = model.Value.ToString();
+    }
+
+    private void ShowModels()
+    {
+        modelList = "Содержимое списка models:\n";
+        foreach (var model in models)
+        {
+            modelList += $"Name: {model.Name}, Value: {model.Value}\n";
+        }
+    }
+
+    private void ClearInputFields()
+    {
+        nameTextField = "";
+        valueTextField = "";
+    }
+
+    public class Model
+    {
+        public string Name { get; set; }
+        public int Value { get; set; }
+    }
+}

@@ -1,0 +1,88 @@
+﻿@page "/formteaching2"
+@using ProfessorOfTheYear.Client.Model
+@inject NavigationManager NavigationManager
+@using System.ComponentModel.DataAnnotations
+@rendermode RenderMode.InteractiveAuto
+
+<style>
+    .valid.modified:not([type=checkbox]) {
+        outline: 1px solid #26b050;
+    }
+
+    .invalid {
+        outline: 1px solid red;
+    }
+
+    .validation-message {
+        color: red;
+    }
+</style>
+
+<h1>Заполните анкету участника</h1>
+<EditForm EditContext="@editContext" OnValidSubmit="HandleOnValidSubmit">
+    <DataAnnotationsValidator />
+
+
+    <ProfessorOfTheYear.Client.Component.Jobdetails />
+
+    <ProfessorOfTheYear.Client.Component.Worklist />
+
+    <ProfessorOfTheYear.Client.Component.Workshoplist />
+
+
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <Button Type="ButtonType.Submit" Color="ButtonColor.Success" Class="float-end me-2">Submit</Button>
+            <Button Color="ButtonColor.Secondary" @onclick="Comeback"> Вернуться назад </Button>
+        </div>
+    </div>
+    
+
+</EditForm>
+
+@code {
+    private Invoice invoice = new();
+    private EditContext? editContext;
+
+    protected override void OnInitialized()
+    {
+        editContext = new EditContext(invoice);
+        base.OnInitialized();
+    }
+    protected void OnClick(EventArgs args)
+    {
+        Console.WriteLine("click event");
+    }
+
+
+    public void HandleOnValidSubmit()
+    {
+        NavigationManager.NavigateTo("/formteaching3");
+    }
+
+    public void Comeback()
+    {
+        NavigationManager.NavigateTo("/formteaching1");
+    }
+
+    public class Invoice
+    {
+
+        //[Range(1, 3, ErrorMessage = "Выберите направление конкурса")]
+        public int? bachelorscount { get; set; }
+
+
+        //[Range(1, 3, ErrorMessage = "Выберите направление конкурса")]
+        public int? specialistscount { get; set; }
+
+
+        public int? masterscount { get; set; }
+
+
+        public int? candidatesofsciencescount { get; set; }
+
+
+        public int? doctorsofsciencescount { get; set; }
+
+    }
+}

@@ -1,0 +1,130 @@
+﻿@page "/formteaching1"
+@using ProfessorOfTheYear.Client.Model
+@inject NavigationManager NavigationManager
+@using System.ComponentModel.DataAnnotations
+@rendermode RenderMode.InteractiveAuto
+
+<style>
+    .valid.modified:not([type=checkbox]) {
+        outline: 1px solid #26b050;
+    }
+
+    .invalid {
+        outline: 1px solid red;
+    }
+
+    .validation-message {
+        color: red;
+    }
+</style>
+
+<h1>Заполните анкету участника</h1>
+<EditForm EditContext="@editContext" OnValidSubmit="HandleOnValidSubmit">
+    <DataAnnotationsValidator />
+
+
+    <ProfessorOfTheYear.Client.Component.Studyload />
+
+    <h5>Руководство дипломными проектами за предыдущий учебный год:</h5>
+
+    <div class="form-group row mb-3">
+        <label class="col-md-2 col-form-label">Защитившиеся бакалавры: <span class="text-danger">*</span></label>
+        <div class="col-md-10">
+            <InputNumber class="form-control" @bind-Value="invoice.bachelorscount" Placeholder="Введите количество" />
+            <ValidationMessage For="@(() => invoice.bachelorscount)" />
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+        <label class="col-md-2 col-form-label">Защитившиеся специалисты: <span class="text-danger">*</span></label>
+        <div class="col-md-10">
+            <InputNumber class="form-control" @bind-Value="invoice.specialistscount" Placeholder="Введите количество" />
+            <ValidationMessage For="@(() => invoice.specialistscount)" />
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+        <label class="col-md-2 col-form-label">Защитившиеся магистры: <span class="text-danger">*</span></label>
+        <div class="col-md-10">
+            <InputNumber class="form-control" @bind-Value="invoice.masterscount" Placeholder="Введите количество" />
+            <ValidationMessage For="@(() => invoice.masterscount)" />
+        </div>
+    </div>
+
+    <h5>Список подготовленных под руководством участника конкурса аспирантов (докторантов) за последние пять лет научно-педагогической деятельности:</h5>
+
+    <div class="form-group row mb-3">
+        <label class="col-md-2 col-form-label">Количество защитившихся кандидатов наук: <span class="text-danger">*</span></label>
+        <div class="col-md-10">
+            <InputNumber class="form-control" @bind-Value="invoice.candidatesofsciencescount" Placeholder="Введите количество" />
+            <ValidationMessage For="@(() => invoice.candidatesofsciencescount)" />
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+        <label class="col-md-2 col-form-label">Количество защитившихся докторов наук: <span class="text-danger">*</span></label>
+        <div class="col-md-10">
+            <InputNumber class="form-control" @bind-Value="invoice.doctorsofsciencescount" Placeholder="Введите количество" />
+            <ValidationMessage For="@(() => invoice.doctorsofsciencescount)" />
+        </div>
+    </div>
+
+    <ProfessorOfTheYear.Client.Component.Studentlist />
+
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <Button Type="ButtonType.Submit" Color="ButtonColor.Success" Class="float-end me-2">Submit</Button>
+            <Button Color="ButtonColor.Secondary" @onclick="Comeback"> Вернуться назад </Button>
+        </div>
+    </div>
+
+    
+
+</EditForm>
+
+@code {
+    private Invoice invoice = new();
+    private EditContext? editContext;
+
+    protected override void OnInitialized()
+    {
+        editContext = new EditContext(invoice);
+        base.OnInitialized();
+    }
+    protected void OnClick(EventArgs args)
+    {
+        Console.WriteLine("click event");
+    }
+
+
+    public void HandleOnValidSubmit()
+    {
+        NavigationManager.NavigateTo("/formteaching2");
+    }
+
+    public void Comeback()
+    {
+        NavigationManager.NavigateTo("/formteaching");
+    }
+
+    public class Invoice
+    {
+
+        //[Range(1, 3, ErrorMessage = "Выберите направление конкурса")]
+        public int? bachelorscount { get; set; }
+
+
+        //[Range(1, 3, ErrorMessage = "Выберите направление конкурса")]
+        public int? specialistscount { get; set; }
+
+
+        public int? masterscount { get; set; }
+
+
+        public int? candidatesofsciencescount { get; set; }
+
+
+        public int? doctorsofsciencescount { get; set; }
+
+    }
+}

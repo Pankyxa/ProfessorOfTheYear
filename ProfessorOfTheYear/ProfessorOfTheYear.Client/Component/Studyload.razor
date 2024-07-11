@@ -1,0 +1,135 @@
+﻿
+@*<input @bind="nameTextField" placeholder="Name" />
+<input type="number" @bind="valueTextField" placeholder="Value" />
+*@
+
+
+<style>
+    .adaptive-table {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .table-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .column-header {
+        font-weight: bold;
+        background-color: #f0f0f0;
+        padding: 5px;
+    }
+
+    .input-field {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+
+</style>
+
+<div class="adaptive-table">
+    <div class="table-container">
+        <h5>Руководство дипломными проектами за предыдущий учебный год:</h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="column-header">Наименование курса</th>
+                    <th class="column-header">Язык преподавания</th>
+                    <th class="column-header">Лекции (час)</th>
+                    <th class="column-header">Практические занятия (час)</th>
+                    <th class="column-header">Итого (час)</th>
+                    <th class="column-header"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var model in models)
+                {
+                    <tr>
+                        <td><input @bind="model.CourseName" class="input-field" placeholder="название" /></td>
+                        <td><input @bind="model.CourseLanguage" class="input-field" placeholder="язык" /></td>
+                        <td><input @bind="model.Lectures" class="input-field" placeholder="количество" /></td>
+                        <td><input @bind="model.PracticalLessons" class="input-field" placeholder="количество" /></td>
+                        <td><input @bind="model.Total" class="input-field" placeholder="итого" /></td>
+                        <td>
+                            <Button Color="ButtonColor.Danger" @onclick="() => RemoveModel(model)">X</Button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<Button Color="ButtonColor.Primary" @onclick="AddOrUpdateModel"> Добавить </Button>
+<Button Color="ButtonColor.Primary" @onclick="ShowModels"> Показать </Button>
+<pre>@modelList</pre>
+
+@code {
+    private string nameTextField = "";
+    private string valueTextField = "";
+    private List<Model> models = new List<Model>
+    {
+        new Model { CourseName = "Тест1", Lectures = 1 },
+    };
+
+    private Model selectedModel = null;
+    private string modelList = "";
+
+    private void AddOrUpdateModel()
+    {
+        models.Add(new Model { CourseName = "Тест1", Lectures = 1 });
+        @*if (!string.IsNullOrEmpty(nameTextField) && !string.IsNullOrEmpty(valueTextField))
+        {
+            if (selectedModel == null)
+            {
+                models.Add(new Model { CourseName = nameTextField, Lectures = int.Parse(valueTextField) });
+            }
+            else
+            {
+                selectedModel.CourseName = nameTextField;
+                selectedModel.Lectures = int.Parse(valueTextField);
+                selectedModel = null;
+            }
+            ClearInputFields();
+        }*@
+    }
+
+    private void RemoveModel(Model model)
+    {
+        models.Remove(model);
+    }
+
+    private void EditModel(Model model)
+    {
+        selectedModel = model;
+        nameTextField = model.CourseName;
+        valueTextField = model.Lectures.ToString();
+    }
+
+    private void ShowModels()
+    {
+        modelList = "Содержимое списка models:\n";
+        foreach (var model in models)
+        {
+            modelList += $"Name: {model.CourseName}, Value: {model.Lectures}\n";
+        }
+    }
+
+    private void ClearInputFields()
+    {
+        nameTextField = "";
+        valueTextField = "";
+    }
+
+    public class Model
+    {
+        public string CourseName { get; set; }
+        public string CourseLanguage { get; set; }
+        public int Lectures { get; set; }
+        public int PracticalLessons { get; set; }
+        public int Total { get; set; }
+    }
+}

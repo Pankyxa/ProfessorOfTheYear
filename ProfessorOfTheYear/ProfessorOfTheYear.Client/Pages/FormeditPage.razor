@@ -1,19 +1,170 @@
 ﻿@page "/formeditpage"
-@rendermode InteractiveAuto
+@using ProfessorOfTheYear.Client.Model
+@inject NavigationManager NavigationManager
+@using System.ComponentModel.DataAnnotations
+@rendermode RenderMode.InteractiveAuto
 
-<PageTitle>Counter</PageTitle>
+<style>
+    .valid.modified:not([type=checkbox]) {
+        outline: 1px solid #26b050;
+    }
 
-<h1>Counter</h1>
+    .invalid {
+        outline: 1px solid red;
+    }
 
-<p role="status">Current count: @currentCount</p>
+    .validation-message {
+        color: red;
+    }
+</style>
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<h1>Заполните заявку</h1>
+<EditForm EditContext="@editContext" OnValidSubmit="HandleOnValidSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="form-group row mb-3">
+        <label class="col-md-2 col-form-label">Выберите направление конкурса: <span class="text-danger">*</span></label>
+        <div class="col-md-10">
+            <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.directioncompetition" Placeholder="Выберите направление конкурса:">
+                    <option hidden selected value="0">Выберите направление конкурса:</option>
+                    <option value="1">АРХИТЕКТУРА</option>
+                    <option value="2">ТЕХНИКА И ТЕХНОЛОГИИ СТРОИТЕЛЬСТВА</option>
+                    <option value="3">СТРОИТЕЛЬСТВО И АРХИТЕКТУРА</option>
+                    <option value="4">ЭЛЕКТРО - И ТЕПЛОЭНЕРГЕТИКА</option>
+                    <option value="5">ЯДЕРНАЯ ЭНЕРГЕТИКА И ТЕХНОЛОГИИ</option>
+                    <option value="6">ЭНЕРГЕТИКА И ЭЛЕКТРОТЕХНИКА</option>
+                </InputSelect>
+                <ValidationMessage For="@(() => invoice.directioncompetition)" />
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+        <label class="col-md-2 col-form-label">Выберите категорию участника конкурса: <span class="text-danger">*</span></label>
+        <div class="col-md-10">
+            <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.categorycompetition" Placeholder="Выберите категорию участника конкурса">
+                <option hidden selected value="0">Выберите категорию участника конкурса:</option>
+                <option value="1">аспиранты, адъюнкты, ординаторы, ассистенты-стажеры и работники высших учебных заведений, отраслевых и академических институтов, работники сектора промышленности (исследователи), не имеющие ученой степени</option>
+                <option value="2">докторанты и работники высших учебных заведений, отраслевых и академических институтов, работники сектора промышленности (исследователи), имеющие ученую степень кандидата наук</option>
+                <option value="3">работники высших учебных заведений, отраслевых и академических институтов, работники сектора промышленности (исследователи), имеющие ученую степень доктора наук </option>
+            </InputSelect>
+            <ValidationMessage For="@(() => invoice.categorycompetition)" />
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+        <label class="col-md-2 col-form-label">Полное название вашей работы: <span class="text-danger">*</span></label>
+        <div class="col-md-10">
+            <InputText class="form-control" @bind-Value="invoice.Nameofwork" Placeholder="Введите полное название вашей работы" />
+            <ValidationMessage For="@(() => invoice.Nameofwork)" />
+        </div>
+    </div>
+
+
+    <div class="form-group row mb-3">
+        <label class="col-md-2 col-form-label">ФИО: <span class="text-danger">*</span></label>
+        <div class="col-md-10">
+            <InputText class="form-control" @bind-Value="invoice.Fullname" Placeholder="Введите ФИО" />
+            <ValidationMessage For="@(() => invoice.Fullname)" />
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+        <label class="col-md-2 col-form-label">Дата рождения: <span class="text-danger">*</span></label>
+        <div class="col-md-10">
+            <DateInput TValue="DateOnly?" @bind-Value="invoice.InvoiceDate" />
+            <ValidationMessage For="@(() => invoice.InvoiceDate)" />
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+        <label class="col-md-2 col-form-label">место работы/учебы: <span class="text-danger">*</span></label>
+        <div class="col-md-10">
+            <InputText class="form-control" @bind-Value="invoice.Placeofwork" Placeholder="Введите место работы/учебы" />
+            <ValidationMessage For="@(() => invoice.Placeofwork)" />
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+        <label class="col-md-2 col-form-label">Введите должность: <span class="text-danger">*</span></label>
+        <div class="col-md-10">
+            <InputText class="form-control" @bind-Value="invoice.Post" Placeholder="Введите должность" />
+            <ValidationMessage For="@(() => invoice.Post)" />
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+        <label class="col-md-2 col-form-label">Введите стаж работы: <span class="text-danger">*</span></label>
+        <div class="col-md-10">
+            <InputText class="form-control" @bind-Value="invoice.workexperience" Placeholder="Введите стаж работы" />
+            <ValidationMessage For="@(() => invoice.workexperience)" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-right">
+            <Button Type="ButtonType.Submit" Color="ButtonColor.Success" Class="float-end me-2">Submit</Button>
+        </div>
+    </div>
+</EditForm>
 
 @code {
-    private int currentCount = 0;
+    private Invoice invoice = new();
+    private EditContext? editContext;
 
-    private void IncrementCount()
+    protected override void OnInitialized()
     {
-        currentCount++;
+        editContext = new EditContext(invoice);
+        base.OnInitialized();
+    }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+    }
+
+    private void PriceChanged(decimal? value)
+    {
+        
+    }
+
+    private void DiscountChanged(decimal? value)
+    {
+        
+    }
+
+
+    public void HandleOnValidSubmit()
+    {
+        NavigationManager.NavigateTo("/formsuccess");
+    }
+
+    public class Invoice
+    {
+        [Required(ErrorMessage = "Выберите направление конкурса")]
+        //[Range(1, 3, ErrorMessage = "Выберите направление конкурса")]
+        public string? directioncompetition { get; set; }
+
+        [Required(ErrorMessage = "Выберите категорию участника конкурса")]
+        //[Range(1, 3, ErrorMessage = "Выберите направление конкурса")]
+        public string? categorycompetition { get; set; }
+
+        [Required(ErrorMessage = "Введите полное название вашей работы")]
+        public string? Nameofwork { get; set; }
+
+        [Required(ErrorMessage = "Введите ФИО")]
+        public string? Fullname { get; set; }
+
+        [Required(ErrorMessage = "Укажите дату рождения")]
+        public DateOnly? InvoiceDate { get; set; }
+
+        [Required(ErrorMessage = "Введите место работы/учебы")]
+        public string? Placeofwork { get; set; }
+
+        [Required(ErrorMessage = "Введите должность")]
+        public string? Post { get; set; }
+
+        [Required(ErrorMessage = "Введите стаж работы")]
+        public string? workexperience { get; set; }
+
     }
 }

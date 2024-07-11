@@ -1,0 +1,107 @@
+﻿@page "/formeditpageold"
+@using ProfessorOfTheYear.Client.Model
+@inject NavigationManager NavigationManager
+@rendermode RenderMode.InteractiveAuto
+
+<PageTitle>Анкета</PageTitle>
+
+<h1>Заполните заявку</h1>
+
+
+<div>
+    <label for="competition" class="form-label">выбор конкурса</label>
+    <select id="competition" class="form-select form-select mb-3" aria-label=".form-select">
+        <option selected value="1">АРХИТЕКТУРА</option>
+        <option value="2">ТЕХНИКА И ТЕХНОЛОГИИ СТРОИТЕЛЬСТВА</option>
+        <option value="3">СТРОИТЕЛЬСТВО И АРХИТЕКТУРА</option>
+        <option value="4">ЭЛЕКТРО - И ТЕПЛОЭНЕРГЕТИКА</option>
+        <option value="5">ЯДЕРНАЯ ЭНЕРГЕТИКА И ТЕХНОЛОГИИ</option>
+        <option value="6">ЭНЕРГЕТИКА И ЭЛЕКТРОТЕХНИКА</option>
+    </select>
+</div>
+<div>
+    <label for="category" class="form-label">выбор категории</label>
+    <select id="category" style="white-space: normal" class="form-select form-select mb-3" aria-label=".form-select">
+        <option selected value="1">аспиранты, адъюнкты, ординаторы, ассистенты-стажеры и работники высших учебных заведений, отраслевых и академических институтов, работники сектора промышленности (исследователи), не имеющие ученой степени</option>
+        <option value="2">докторанты и работники высших учебных заведений, отраслевых и академических институтов, работники сектора промышленности (исследователи), имеющие ученую степень кандидата наук</option>
+        <option value="3">работники высших учебных заведений, отраслевых и академических институтов, работники сектора промышленности (исследователи), имеющие ученую степень доктора наук </option>
+    </select>
+</div>
+
+
+<div>
+    <label for="workName" class="form-label">Название работы</label>
+    <InputText id="workName" class="form-control" @bind-Value="@form.WorkName" type ="text" placeholder="Поле ввода по умолчанию" />
+</div>
+<div>
+    <label for="placeOfWork" class="form-label">Место работы</label>
+    <InputText id="placeOfWork" class="form-control" @bind-Value="@form.PlaceOfWork" type="text" placeholder="Поле ввода по умолчанию" />
+</div>
+<div>
+    <label for="fullName" class="form-label">ФИО</label>
+    <InputText id="fullName" class="form-control" @bind-Value="@form.FullName" type="text" placeholder="Поле ввода по умолчанию" />
+</div>
+<div>
+    <label for="birthday" class="form-label">Дата рождения</label>
+    <DateInput id="birthday" TValue="DateOnly" @bind-Value="@form.Birthday" Placeholder="Enter Date" />
+</div>
+<div>
+    <label for="post" class="form-label">Должность</label>
+    <InputText id="post" class="form-control" @bind-Value="@form.Post" type="text" placeholder="Поле ввода по умолчанию" />
+</div>
+<div>
+    <label for="experience" class="form-label">Стаж работы</label>
+    <InputText id="experience" class="form-control" @bind-Value="@form.Experience" type="text" placeholder="Поле ввода по умолчанию" />
+</div>
+<label for="competitioncategory" class="form-label">Подаюсь на соискание премии в</label>
+<select id="competitioncategory" style="white-space: normal" class="form-select form-select mb-3" aria-label=".form-select" @bind="@competitionValue">
+    <option selected value="1">научно-педагогической деятельности</option>
+    <option value="2">научно-исследовательской деятельности</option>
+</select>
+<p>@competitionValue</p>
+@*<div class="mb-3">
+    <label for="formFile" class="form-label">Приложите скан паспорта</label>
+    <input class="form-control" type="file" id="formFilepassport">
+</div>
+
+<div class="mb-3">
+    <label for="formFile" class="form-label">Приложите справку с места работы</label>
+    <input class="form-control" type="file" id="formFilepassport">
+</div>
+*@
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+    <label class="form-check-label" for="flexCheckDefault">
+        Согласен на обработку персональных данных
+    </label>
+</div>
+<div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked">
+    <label class="form-check-label" for="flexCheckChecked">
+        Указанные данные являются достоверными
+    </label>
+</div>
+
+<div class="row">
+    <div class="col-md-12 text-right">
+        <Button Type="ButtonType.Button" Color="ButtonColor.Secondary" Class="float-end">Reset</Button>
+        <Button Type="ButtonType.Submit" Color="ButtonColor.Success" Class="float-end me-2">Submit</Button>
+    </div>
+</div>
+
+@code {
+    Form form = new Form();
+    string competitionValue="1";
+    private void HandleValidSubmit()
+    {
+        // Проверяем условие и перенаправляем
+        if (competitionValue == "1") // Пример условия
+        {
+            NavigationManager.NavigateTo("/formeditpage/architecture");
+        }
+        else
+        {
+            // Обработка других случаев или ошибок
+        }
+    }
+}
