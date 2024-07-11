@@ -1,0 +1,19 @@
+<div class="card-form">
+    <div class="professor-avatar"></div>
+    <div class="description">
+        <div class="div">@professorInfo!.Name</div>
+        <div class="institution">
+            <div class="div2">Учебное заведение:</div>
+            <div class="div3">@professorInfo.EducationalInstitution</div>
+        </div>
+        <div class="degree">
+            <div class="div2">Ученая степень:</div>
+            <div class="div3">@professorInfo.AcademicDegree</div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public ProfessorInfo? professorInfo { get; set; }
+}

@@ -101,6 +101,10 @@ h1:focus {
     .nav-buttons {
         gap: 3px;
     }
+
+    .stages-competition {
+        flex-wrap: nowrap;
+    }
 }
 
 @media (max-width: 992px) {      
@@ -112,6 +116,10 @@ h1:focus {
     .min-logo {
         width: 130px;
     }
+
+    .stages-competition {
+        flex-wrap: wrap;
+    }
 }
 
 @media (max-width: 768px) {
@@ -122,6 +130,10 @@ h1:focus {
 
     .nav-buttons {
        justify-content: center; 
+    }
+
+    .stages-competition {
+        flex-wrap: wrap;
     }
 }
 
@@ -190,6 +202,43 @@ h1:focus {
     text-align: left;
     position: relative;
     align-self: stretch;
+}
+
+/* из страницы About */
+.circle-stage {
+    display: flex;
+    width: 10em;
+    height: 10em;
+    border-radius: 50%;
+    background: #7A78FC;
+    align-items: center;
+}
+
+.circle-stage-number {
+    padding-left: 5vh;
+    font-size: 200px;
+    color: #fff;
+}
+
+.circle-stage-title {
+    color: #000000;
+    font-family: "Inter-ExtraBold", sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    position: relative;
+    align-self: stretch;
+}
+
+.stages-competition {
+    display: flex;
+    padding: 1rem;
+}
+
+.content-column {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+    text-align: center;
 }
 
 .block-content-photo {
