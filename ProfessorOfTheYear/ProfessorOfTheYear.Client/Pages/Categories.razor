@@ -1,5 +1,6 @@
 @page "/voting"
 @inject NavigationManager navigate
+@rendermode InteractiveServer
 
 <PageTitle>Голосование</PageTitle>
 
@@ -15,7 +16,7 @@
 <div class="page-content">
     @for (int i = 0; i < 3; i++) {
         <div @onclick="NavigateToPage">
-            <ProfessorOfTheYear.Client.Layout.Cards.CategoryCard />
+            <CategoryCard />
         </div>
     }
 </div>

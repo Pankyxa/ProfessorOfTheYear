@@ -17,9 +17,7 @@
 <div class="page-content">
     @for (int i = 0; i < pi!.Count(); i ++)
     {
-        <div>
-            <ProfessorOfTheYear.Client.Layout.Cards.TeacherCard professorInfo="pi![i]" />
-        </div>
+        <TeacherCard professorInfo="pi![i]" />
     }
 </div>
 
