@@ -3,5 +3,6 @@
     public interface ProfessorsDataService
     {
         Task<List<ProfessorInfo>> GetAllProfessors();
+        Task<ProfessorInfo> GetProfessorIdAsync(string Id);
     }
 }

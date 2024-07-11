@@ -1,5 +1,5 @@
 @page "/about"
-@rendermode InteractiveAuto
+@rendermode InteractiveServer
 @using System.ComponentModel.DataAnnotations
 @using System.Timers;
 
@@ -133,7 +133,12 @@
             <li>tincidunt dui ut. Cras adipiscing. </li>
         </ul>
         <div class="d-flex flex-wrap gap-2 justify-content-center">
-            <Button class="btn btn-primary">Проголосовать</Button>
+            <Button
+               Type="ButtonType.Link"
+               class="btn btn-primary"
+               To="/voting">
+                Проголосовать
+            </Button>
             <Button class="btn btn-primary">Подать заявку на участие</Button>
         </div>
     </div>

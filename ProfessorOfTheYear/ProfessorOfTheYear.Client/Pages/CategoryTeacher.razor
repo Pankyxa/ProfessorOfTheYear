@@ -1,13 +1,16 @@
-@page "/voting/category/teacher"
+@page "/voting/category/teacher/{Id}"
+@rendermode InteractiveServer
+@inject ProfessorsDataService pds
+@inject NavigationManager navigate
 
 <PageTitle>Голосование</PageTitle>
 
 <div class="block-title">
     <div class="title-direction" >
-        <div class="block-title-text">Петров Хасбулла Александрович</div>
+        <div class="block-title-text">@professorInfo!.Name</div>
         <div class="text-direction">
             <div class="div2">Количество голосов: 123</div>
-            <Icon Name="IconName.ArrowLeft" Size="IconSize.x2" />
+            <Icon Name="IconName.ArrowLeft" Size="IconSize.x2" @onclick="NavToBack" type="button" />
         </div>
     </div>
 </div>
@@ -19,7 +22,7 @@
       <div class="line">
         <div class="place-of-work">
           <div class="div2">Место работы</div>
-          <div class="div3">ТИУ, ВШЦТ</div>
+          <div class="div3">@professorInfo.EducationalInstitution</div>
         </div>
         <div class="job">
           <div class="div2">Должность</div>
@@ -43,7 +46,7 @@
         </div>
         <div class="academic-degree">
           <div class="div2">Учёная степень (при наличии)</div>
-          <div class="div3">Кандидат технических наук</div>
+          <div class="div3">@professorInfo.AcademicDegree</div>
         </div>
       </div>
     </div>
@@ -73,3 +76,27 @@
         }
     </div>
 </div>
+
+@code {
+    [Parameter]
+    public string? Id { get; set; }
+
+    ProfessorInfo? professorInfo { get; set; } = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id != null)
+        {
+            ProfessorInfo professor = await pds.GetProfessorIdAsync(Id);
+            professorInfo!.Id = professor.Id;
+            professorInfo!.Name = professor.Name;
+            professorInfo!.EducationalInstitution = professor.EducationalInstitution;
+            professorInfo!.AcademicDegree = professor.AcademicDegree;
+        }
+    }
+
+    private void NavToBack()
+    {
+        navigate.NavigateTo("/voting/category");
+    }
+}

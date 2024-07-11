@@ -1,4 +1,6 @@
-<div class="card-form">
+@rendermode InteractiveServer
+
+<div class="card-form" @onclick="() => OnUpdateHandler(professorInfo.Id!)">
     <div class="professor-avatar"></div>
     <div class="description">
         <div class="div">@professorInfo!.Name</div>
@@ -16,4 +18,12 @@
 @code {
     [Parameter]
     public ProfessorInfo? professorInfo { get; set; }
+
+    [Parameter]
+    public EventCallback<string> ViewInfo { get; set; }
+
+    async Task OnUpdateHandler(string Id)
+    {
+        await ViewInfo.InvokeAsync(Id);
+    }
 }

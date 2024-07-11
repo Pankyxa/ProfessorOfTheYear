@@ -1,4 +1,5 @@
 @page "/voting/category"
+@rendermode InteractiveServer
 @inject ProfessorsDataService pds
 @inject NavigationManager navigate
 
@@ -7,7 +8,7 @@
 <div class="block-title">
     <div class="title-direction" >
         <div class="block-title-text">Название категории</div>
-        <Icon Name="IconName.ArrowLeft" Size="IconSize.x2" />
+        <Icon Name="IconName.ArrowLeft" Size="IconSize.x2" @onclick="NavToBack" type="button" />
     </div>
     <div class="block-content-text">
         Выберите кандидата для голосования
@@ -15,18 +16,38 @@
 </div>
 
 <div class="page-content">
-    @for (int i = 0; i < pi!.Count(); i ++)
+    @if (professors == null)
     {
-        <TeacherCard professorInfo="pi![i]" />
+        <p>Loading...</p>
+    } else {
+        @foreach (var professor in professors)
+        {
+            <div class="click-cursor">
+                <TeacherCard
+                    professorInfo="professor"
+                    ViewInfo="async () => await OnUpdateHandler(professor.Id!)"
+                />
+            </div>
+        }
     }
 </div>
 
 @code {
     [Parameter]
-    public List<ProfessorInfo>? pi { get; set; }
-        
+    public List<ProfessorInfo>? professors { get; set; }
+
     protected override async Task OnParametersSetAsync()
     {
-        pi = await pds.GetAllProfessors();
+        professors = await pds.GetAllProfessors();
+    }
+
+    async Task OnUpdateHandler(string id)
+    {
+        await Task.Run(() => navigate.NavigateTo($"/voting/category/teacher/{id}"));
+    }
+
+    private void NavToBack()
+    {
+        navigate.NavigateTo("/voting");
     }
 }
