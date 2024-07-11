@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using ProfessorOfTheYear.Client.Pages;
-using ProfessorOfTheYear.Client.Data.About;
 using ProfessorOfTheYear.Components;
 using ProfessorOfTheYear.Components.Account;
 using ProfessorOfTheYear.Data;
+using ProfessorOfTheYear.Client.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

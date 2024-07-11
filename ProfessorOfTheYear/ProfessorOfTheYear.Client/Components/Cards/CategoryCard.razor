@@ -1,4 +1,4 @@
-<div class="category-card">
+<div class="category-card" type="button" @onclick="async () => await ViewInfoHandler()">
   <div class="category-description">
     <div class="category-title">Название категории</div>
     <div class="category-text">
@@ -9,3 +9,13 @@
     </div>
   </div>
 </div>
+
+@code {
+    [Parameter]
+    public EventCallback ViewInfo { get; set; }
+
+    async Task ViewInfoHandler()
+    {
+        await ViewInfo.InvokeAsync();
+    }
+}

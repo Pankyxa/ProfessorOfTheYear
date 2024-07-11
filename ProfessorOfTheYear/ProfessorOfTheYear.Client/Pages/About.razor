@@ -150,17 +150,17 @@
         Участники
     </div>
 </div>
-@* карусель *@
+
 <Carousel />
 
 @code {
     private DateTime targetDate = new DateTime(2024, 11, 11); // Целевая дата
 
-    private string days;
-    private string hours;
-    private string minutes;
+    private string? days;
+    private string? hours;
+    private string? minutes;
 
-    private Timer timer;
+    private Timer? timer;
 
     protected override void OnInitialized()
     {
@@ -169,7 +169,7 @@
         timer = new Timer(1000);
 
         // событие Elapsed
-        timer.Elapsed += UpdateCountdown;
+        timer.Elapsed += UpdateCountdown!;
 
         // Запуск таймера
         timer.Start();
@@ -192,7 +192,7 @@
         else
         {
             // Остановка таймера, если отсчет завершен
-            timer.Stop();
+            timer!.Stop();
         }
     }
 }

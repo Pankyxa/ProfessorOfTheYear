@@ -1,4 +1,4 @@
-﻿namespace ProfessorOfTheYear.Client.Data.About
+﻿namespace ProfessorOfTheYear.Client.Data
 {
     public class ProfessorInfo
     {

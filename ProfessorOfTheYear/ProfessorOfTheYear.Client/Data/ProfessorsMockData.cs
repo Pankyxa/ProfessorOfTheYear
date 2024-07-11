@@ -1,4 +1,4 @@
-﻿namespace ProfessorOfTheYear.Client.Data.About
+﻿namespace ProfessorOfTheYear.Client.Data
 {
     public class ProfessorsMockData : ProfessorsDataService
     {
@@ -59,14 +59,14 @@
             }
         ];
 
-        public async Task<List<ProfessorInfo>> GetAllProfessors()
+        public async Task<List<ProfessorInfo>> GetAllProfessorsAsync()
         {
-            return await Task.FromResult<List<ProfessorInfo>>(professorInfos);
+            return await Task.FromResult(professorInfos);
         }
 
-        public async Task<ProfessorInfo> GetProfessorIdAsync(string Id)
+        public async Task<ProfessorInfo> GetProfessorAsync(string Id)
         {
-            return await Task.FromResult<ProfessorInfo>(professorInfos.First(x => x.Id == Id));
+            return await Task.FromResult(professorInfos.First(x => x.Id == Id));
         }
     }
 }
