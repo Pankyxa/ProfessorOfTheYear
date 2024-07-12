@@ -1,0 +1,95 @@
+﻿@page "/Account/Manage/ParticipationStatus"
+
+@inject IdentityUserAccessor UserAccessor
+
+<PageTitle>Статус участника</PageTitle>
+
+<StatusMessage />
+<h3>Статус участника</h3>
+
+<div class="row">
+    <div class="col">
+        <div class="alert alert-primary" role="alert">
+            Ваш текущий статус — <strong>Посетитель</strong>. Чтобы получить статус <strong>Участник</strong>, вам нужно подать заявку
+            и дождаться решения администрации. Вы можете сделать это с помощью кнопки ниже.
+        </div>
+        <Button 
+            Type="ButtonType.Link"   
+            Color="ButtonColor.Success"
+            To="#">
+                Подать заявку
+        </Button>
+        
+        <hr />
+
+        <div class="alert alert-secondary" role="alert">
+            Заявка на участие создана и <strong>ожидает заполнения</strong>.
+        </div>
+        <Button 
+            Type="ButtonType.Link"
+            Color="ButtonColor.Primary"
+            To="#">
+                Продолжить заполнение
+        </Button>
+        <Button 
+            Type="ButtonType.Submit"
+            Color="ButtonColor.Danger"
+            To="#">
+                Удалить заявку
+        </Button>
+
+        <hr />
+
+        <div class="alert alert-warning" role="alert">
+            Заявка на участие была отправлена <strong>на рассмотрение администрацией</strong>. Пожалуйста, дождитесь решения.
+        </div>
+        <Button 
+            Type="ButtonType.Submit"
+            Color="ButtonColor.Danger"
+            To="#">
+                Отозвать заявку
+        </Button>
+
+        <hr />
+
+        <div class="alert alert-success" role="alert">
+            Поздравляем! Наши эксперты одобрили вашу заявку на участие в конкурсе. Вы получаете статус <strong>Участник</strong>. 
+            Теперь вам доступна анкета участника конкурса. Нажмите кнопку ниже, чтобы начать заполнение.
+        </div>
+        <Button 
+            Type="ButtonType.Link"
+            Color="ButtonColor.Primary"
+                To="Account/ParticipantEditForm">
+                Заполнить анкету педагога
+        </Button>
+        <Button 
+            Type="ButtonType.Submit"
+            Color="ButtonColor.Danger"
+            To="#">
+                Отозвать заявку
+        </Button>
+
+        <hr />
+
+        <div class="alert alert-danger" role="alert">
+            К сожалению, наши специалисты <strong>отклонили заявку</strong> на ваше участие. Однако мы предоставляем возможность повторной отправки,
+            поэтому внимательно изучите причину отказа. Если у вас возникнут вопросы, вы можете обратиться в службу поддержки через форму обратной связи.
+        </div>
+        <Button 
+            Type="ButtonType.Link"
+            Color="ButtonColor.Primary"
+            To="#">
+                Редактировать заявку
+        </Button>
+        <Button 
+            Type="ButtonType.Link"
+            Color="ButtonColor.Primary"
+            To="#">
+                Связаться с поддержкой
+        </Button>
+    </div>
+</div>
+
+@code {
+
+}
