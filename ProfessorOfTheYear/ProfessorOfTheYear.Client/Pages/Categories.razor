@@ -1,0 +1,30 @@
+@page "/voting"
+@inject NavigationManager navigate
+@rendermode InteractiveServer
+
+<PageTitle>Голосование</PageTitle>
+<div class="block-group">
+    <div class="block">
+        <div class="block-title">
+            <div class="block-title-text">
+                Категoрии голосования
+            </div>
+            <div class="block-content-text">
+                Выберите категорию, в которой хотели бы проголосовать
+            </div>
+        </div>
+
+        <div class="block-content">
+            @for (int i = 0; i < 3; i++) {
+                <CategoryCard ViewInfo="ViewInfoHandler"/>
+            }
+        </div>
+    </div>
+</div>
+
+@code {
+    async Task ViewInfoHandler()
+    {
+        await Task.Run(() => navigate.NavigateTo("/voting/category"));
+    }
+}

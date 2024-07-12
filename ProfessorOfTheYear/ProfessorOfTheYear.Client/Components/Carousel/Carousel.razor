@@ -16,7 +16,7 @@
                     <div class="carousel-display">
                         @for (int j = i * 3; j < i * 3 + 3; j++)
                         {
-                            <ProfessorOfTheYear.Client.Layout.Cards.TeacherCard professorInfo="pi![j]" />
+                            <TeacherCard professorInfo="pi![j]" />
                         }
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                     <div class="carousel-display">
                         @for (int j = i * 3; j < i * 3 + 3; j++)
                         {
-                            <ProfessorOfTheYear.Client.Layout.Cards.TeacherCard professorInfo="pi![j]" />
+                            <TeacherCard professorInfo="pi![j]" />
                         }
                     </div>
                 </div>
@@ -52,6 +52,6 @@
 
     protected override async Task OnParametersSetAsync()
     {
-        pi = await pds.GetAllProfessors();
+        pi = await pds.GetAllProfessorsAsync();
     }
 }

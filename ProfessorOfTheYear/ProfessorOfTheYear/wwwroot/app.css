@@ -145,6 +145,7 @@ h1:focus {
     align-items: center;
     justify-content: flex-start;
     position: relative;
+    margin-bottom: 20px;
 }
 
 .block {
@@ -204,6 +205,34 @@ h1:focus {
     align-self: stretch;
 }
 
+.block-content-photo {
+    background: #d0d0d0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-self: stretch;
+    flex-shrink: 0;
+    height: 600px;
+    position: relative;
+}
+
+@media (max-width: 1200px) {
+    .block-title-text {
+        font-size: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .block-title-text {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .block-content-text {
+        text-align: center;
+    }
+}
+
 /* из страницы About */
 .circle-stage {
     display: flex;
@@ -239,32 +268,4 @@ h1:focus {
     flex-direction: column;
     margin: 2rem;
     text-align: center;
-}
-
-.block-content-photo {
-    background: #d0d0d0;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    align-self: stretch;
-    flex-shrink: 0;
-    height: 600px;
-    position: relative;
-}
-
-@media (max-width: 1200px) {
-    .block-title-text {
-        font-size: 40px;
-    }
-}
-
-@media (max-width: 768px) {
-    .block-title-text {
-        font-size: 32px;
-        text-align: center;
-    }
-
-    .block-content-text {
-        text-align: center;
-    }
 }

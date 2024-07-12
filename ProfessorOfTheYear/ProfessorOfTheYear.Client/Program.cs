@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using ProfessorOfTheYear.Client;
-using ProfessorOfTheYear.Client.Data.About;
+using ProfessorOfTheYear.Client.Data;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 

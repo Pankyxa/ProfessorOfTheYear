@@ -1,4 +1,7 @@
-<div class="card-form">
+@rendermode InteractiveServer
+@inject NavigationManager navigate
+
+<div class="card-form" type="button" @onclick="async () => await ViewInfo(professorInfo.Id!)">
     <div class="professor-avatar"></div>
     <div class="description">
         <div class="div">@professorInfo!.Name</div>
@@ -14,6 +17,11 @@
 </div>
 
 @code {
-    [Parameter]
+    [Parameter, EditorRequired]
     public ProfessorInfo? professorInfo { get; set; }
+
+    async Task ViewInfo(string Id)
+    {
+        await Task.Run(() => navigate.NavigateTo($"/voting/category/teacher/{Id}"));
+    }
 }

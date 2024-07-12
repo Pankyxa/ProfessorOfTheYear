@@ -1,0 +1,124 @@
+.title-direction {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.text-direction {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.block-info {
+    flex-direction:row;
+}
+
+.rightside {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  align-self: stretch;
+  flex: 1;
+}
+
+.leftside {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 305px;
+    position: relative;
+}
+
+.brief-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: flex-start;
+  align-self: stretch;
+}
+
+.brief-title {
+  color: #555555;
+  font-family: "Inter-Medium", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.brief-text {
+  font-family: "Inter-Regular", sans-serif;
+}
+
+.photo {
+  background: #7a78fc;
+  align-self: stretch;
+  flex-shrink: 0;
+  height: 353px;
+  position: relative;
+}
+
+.achieves {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-self: stretch;
+    flex-shrink: 0;
+    position: relative;
+}
+
+.achiev-card {
+    background: #ffffff;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #d0d0d0;
+    border-width: 1px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    width: 330px;
+    position: relative;
+    box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+}
+
+@media (max-width: 992px) {      
+    .title-direction {
+        flex-direction: column-reverse;
+    }
+
+    .text-direction {
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    .achiev-card {
+        width: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .block-info {
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .achiev-card {
+        width: 330px;
+    }
+}
