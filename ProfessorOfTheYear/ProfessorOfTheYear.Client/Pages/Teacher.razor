@@ -53,7 +53,21 @@
             </div>
             <div class="leftside">
                 <div class="photo"></div>
-                <Button class="btn btn-primary w-100">Проголосовать</Button>
+                <AuthorizeView>
+                    <NotAuthorized>
+                        <Button Color="ButtonColor.Primary"
+                                Class="w-100"
+                                @onclick="NavToLogin">
+                            Проголосовать
+                        </Button>
+                    </NotAuthorized>
+                    <Authorized>
+                        <Button Color="ButtonColor.Primary"
+                                Class="w-100">
+                            Проголосовать
+                        </Button>
+                    </Authorized>
+                </AuthorizeView>
             </div>
         </div>
     </div>
@@ -107,5 +121,10 @@
     private void NavToBack()
     {
         navigate.NavigateTo("/voting/category");
+    }
+
+    private void NavToLogin()
+    {
+        navigate.NavigateTo($"Account/Login?returnUrl={Uri.EscapeDataString(navigate.Uri)}", forceLoad: true);
     }
 }
