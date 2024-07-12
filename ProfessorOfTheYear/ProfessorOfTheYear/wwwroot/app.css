@@ -110,7 +110,7 @@ h1:focus {
 @media (max-width: 992px) {      
     .nav-underline {
         margin: 0 10px;
-        gap: 7px;
+        gap: 5px;
     }
     
     .min-logo {
