@@ -1,15 +1,32 @@
 ﻿@page "/personalaccount"
 @rendermode InteractiveAuto
+@inject IDataServiceTeaching databaseinformation
+<PageTitle>Personal Account</PageTitle>
 
-<PageTitle>Counter</PageTitle>
+<h1>Base Information Details</h1>
 
-<h1>Counter</h1>
-
-<p role="status">Current count: @currentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+@if (baseInformation != null && baseInformation.Any())
+{
+    <ul>
+        @foreach (var item in baseInformation)
+        {
+            <li>ID: @item.ID, NameWork: @item.NameWork, FullName: @item.FullName</li>
+        }
+    </ul>
+}
+else
+{
+    <p>No base information available.</p>
+}
 
 @code {
+    List<DataTeachingDTO.BaseInformation> baseInformation { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        baseInformation = await databaseinformation.GetAllAsync();
+    }
+
     private int currentCount = 0;
 
     private void IncrementCount()

@@ -47,10 +47,10 @@
                 @foreach (var model in models)
                 {
                     <tr>
-                        <td><input @bind="model.onlinecoursename" class="input-field" placeholder="название" /></td>
-                        <td><input @bind="model.onlinecourseauthor" class="input-field" placeholder="соавторы" /></td>
-                        <td><input @bind="model.onlinecourselink" class="input-field" placeholder="ссылка" /></td>
-                        <td><input @bind="model.onlinecourseyear" class="input-field" placeholder="год" /></td>
+                        <td><input @bind="model.OnlineCourseName" class="input-field" placeholder="название" /></td>
+                        <td><input @bind="model.OnlineCourseAuthor" class="input-field" placeholder="соавторы" /></td>
+                        <td><input @bind="model.OnlineCourseLink" class="input-field" placeholder="ссылка" /></td>
+                        <td><input @bind="model.OnlineCourseYear" class="input-field" placeholder="год" /></td>
                         <td>
                             <Button Color="ButtonColor.Danger" @onclick="() => RemoveModel(model)">X</Button>
                         </td>
@@ -68,7 +68,7 @@
     private string valueTextField = "";
     private List<Model> models = new List<Model>
     {
-        new Model { onlinecoursename = "Курс1"},
+        new Model { OnlineCourseName = "Курс1"},
     };
 
     private Model selectedModel = null;
@@ -76,7 +76,7 @@
 
     private void AddOrUpdateModel()
     {
-        models.Add(new Model { onlinecoursename = "Курс1" });
+        models.Add(new Model { OnlineCourseName = "Курс1" });
         @*if (!string.IsNullOrEmpty(nameTextField) && !string.IsNullOrEmpty(valueTextField))
         {
             if (selectedModel == null)
@@ -107,9 +107,9 @@
 
     public class Model
     {
-        public string onlinecoursename { get; set; }
-        public string onlinecourseauthor { get; set; }
-        public string onlinecourselink { get; set; }
-        public int onlinecourseyear { get; set; }
+        public string OnlineCourseName { get; set; }
+        public string OnlineCourseAuthor { get; set; }
+        public string OnlineCourseLink { get; set; }
+        public int OnlineCourseYear { get; set; }
     }
 }

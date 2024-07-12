@@ -50,10 +50,10 @@
                 @foreach (var model in models)
                 {
                     <tr>
-                        <td><input @bind="model.awardyear" class="input-field" placeholder="год" /></td>
-                        <td><input @bind="model.awardname" class="input-field" placeholder="название" /></td>
-                        <td><input @bind="model.awardtype" class="input-field" placeholder="статус" /></td>
-                        <td><input @bind="model.awardcount" class="input-field" placeholder="награда" /></td>
+                        <td><input @bind="model.AwardYear" class="input-field" placeholder="год" /></td>
+                        <td><input @bind="model.AwardName" class="input-field" placeholder="название" /></td>
+                        <td><input @bind="model.AwardType" class="input-field" placeholder="статус" /></td>
+                        <td><input @bind="model.AwardCount" class="input-field" placeholder="награда" /></td>
                         <td>
                             <Button Color="ButtonColor.Danger" @onclick="() => RemoveModel(model)">X</Button>
                         </td>
@@ -71,7 +71,7 @@
     private string valueTextField = "";
     private List<Model> models = new List<Model>
     {
-        new Model { awardname = "Название1"},
+        new Model { AwardName = "Название1"},
     };
 
     private Model selectedModel = null;
@@ -79,7 +79,7 @@
 
     private void AddOrUpdateModel()
     {
-        models.Add(new Model { awardname = "Название1" });
+        models.Add(new Model { AwardName = "Название1" });
         @*if (!string.IsNullOrEmpty(nameTextField) && !string.IsNullOrEmpty(valueTextField))
         {
             if (selectedModel == null)
@@ -110,9 +110,9 @@
 
     public class Model
     {
-        public int awardyear { get; set; }
-        public string awardname { get; set; }
-        public string awardtype { get; set; }
-        public string awardcount { get; set; }
+        public int AwardYear { get; set; }
+        public string AwardName { get; set; }
+        public string AwardType { get; set; }
+        public string AwardCount { get; set; }
     }
 }

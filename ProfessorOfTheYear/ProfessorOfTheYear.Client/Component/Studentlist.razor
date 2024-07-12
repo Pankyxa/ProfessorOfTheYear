@@ -49,11 +49,11 @@
                 @foreach (var model in models)
                 {
                     <tr>
-                        <td><input @bind="model.FullName" class="input-field" placeholder="ФИО" /></td>
-                        <td><input @bind="model.nameofcompetition" class="input-field" placeholder="название" /></td>
-                        <td><input @bind="model.Year" class="input-field" placeholder="год" /></td>
-                        <td><input @bind="model.statuscompetition" class="input-field" placeholder="статус" /></td>
-                        <td><input @bind="model.reward" class="input-field" placeholder="награда" /></td>
+                        <td><input @bind="model.StudentFullName" class="input-field" placeholder="ФИО" /></td>
+                        <td><input @bind="model.StudentNameCompetition" class="input-field" placeholder="название" /></td>
+                        <td><input @bind="model.StudentYear" class="input-field" placeholder="год" /></td>
+                        <td><input @bind="model.StudentStatusCompetition" class="input-field" placeholder="статус" /></td>
+                        <td><input @bind="model.StudentReward" class="input-field" placeholder="награда" /></td>
                         <td>
                             <Button Color="ButtonColor.Danger" @onclick="() => RemoveModel(model)">X</Button>
                         </td>
@@ -72,7 +72,7 @@
     private string valueTextField = "";
     private List<Model> models = new List<Model>
     {
-        new Model { FullName = "Имя1", Year = 1999 },
+        new Model { StudentFullName = "Имя1", StudentYear = 1999 },
     };
 
     private Model selectedModel = null;
@@ -80,7 +80,7 @@
 
     private void AddOrUpdateModel()
     {
-        models.Add(new Model { FullName = "Имя1", Year = 1999 });
+        models.Add(new Model { StudentFullName = "Имя1", StudentYear = 1999 });
         @*if (!string.IsNullOrEmpty(nameTextField) && !string.IsNullOrEmpty(valueTextField))
         {
             if (selectedModel == null)
@@ -105,8 +105,8 @@
     private void EditModel(Model model)
     {
         selectedModel = model;
-        nameTextField = model.FullName;
-        valueTextField = model.Year.ToString();
+        nameTextField = model.StudentFullName;
+        valueTextField = model.StudentYear.ToString();
     }
 
     private void ShowModels()
@@ -114,7 +114,7 @@
         modelList = "Содержимое списка models:\n";
         foreach (var model in models)
         {
-            modelList += $"Name: {model.FullName}, Value: {model.Year}\n";
+            modelList += $"Name: {model.StudentFullName}, Value: {model.StudentYear}\n";
         }
     }
 
@@ -126,10 +126,10 @@
 
     public class Model
     {
-        public string FullName { get; set; }
-        public string nameofcompetition { get; set; }
-        public int Year { get; set; }
-        public string statuscompetition { get; set; }
-        public int reward { get; set; }
+        public string StudentFullName { get; set; }
+        public string StudentNameCompetition { get; set; }
+        public int StudentYear { get; set; }
+        public string StudentStatusCompetition { get; set; }
+        public int StudentReward { get; set; }
     }
 }

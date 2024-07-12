@@ -45,8 +45,8 @@
                 @foreach (var model in models)
                 {
                     <tr>
-                        <td><input @bind="model.profdevelopmentname" class="input-field" placeholder="название" /></td>
-                        <td><input @bind="model.profdevelopmentyear" class="input-field" placeholder="год" /></td>
+                        <td><input @bind="model.ProfDevelopmentName" class="input-field" placeholder="название" /></td>
+                        <td><input @bind="model.ProfDevelopmentYear" class="input-field" placeholder="год" /></td>
                         <td>
                             <Button Color="ButtonColor.Danger" @onclick="() => RemoveModel(model)">X</Button>
                         </td>
@@ -64,7 +64,7 @@
     private string valueTextField = "";
     private List<Model> models = new List<Model>
     {
-        new Model { profdevelopmentname = "Название1"},
+        new Model { ProfDevelopmentName = "Название1"},
     };
 
     private Model selectedModel = null;
@@ -72,7 +72,7 @@
 
     private void AddOrUpdateModel()
     {
-        models.Add(new Model { profdevelopmentname = "Название1" });
+        models.Add(new Model { ProfDevelopmentName = "Название1" });
         @*if (!string.IsNullOrEmpty(nameTextField) && !string.IsNullOrEmpty(valueTextField))
         {
             if (selectedModel == null)
@@ -103,7 +103,7 @@
 
     public class Model
     {
-        public string profdevelopmentname { get; set; }
-        public int profdevelopmentyear { get; set; }
+        public string ProfDevelopmentName { get; set; }
+        public int ProfDevelopmentYear { get; set; }
     }
 }

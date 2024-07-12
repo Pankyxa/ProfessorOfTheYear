@@ -49,11 +49,11 @@
                 @foreach (var model in models)
                 {
                     <tr>
-                        <td><input @bind="model.CourseName" class="input-field" placeholder="название" /></td>
-                        <td><input @bind="model.CourseLanguage" class="input-field" placeholder="язык" /></td>
-                        <td><input @bind="model.Lectures" class="input-field" placeholder="количество" /></td>
-                        <td><input @bind="model.PracticalLessons" class="input-field" placeholder="количество" /></td>
-                        <td><input @bind="model.Total" class="input-field" placeholder="итого" /></td>
+                        <td><input @bind="model.StudyCourseName" class="input-field" placeholder="название" /></td>
+                        <td><input @bind="model.StudyCourseLanguage" class="input-field" placeholder="язык" /></td>
+                        <td><input @bind="model.StudyLectures" class="input-field" placeholder="количество" /></td>
+                        <td><input @bind="model.StudyPracticalLessons" class="input-field" placeholder="количество" /></td>
+                        <td><input @bind="model.StudyTotal" class="input-field" placeholder="итого" /></td>
                         <td>
                             <Button Color="ButtonColor.Danger" @onclick="() => RemoveModel(model)">X</Button>
                         </td>
@@ -72,7 +72,7 @@
     private string valueTextField = "";
     private List<Model> models = new List<Model>
     {
-        new Model { CourseName = "Тест1", Lectures = 1 },
+        new Model { StudyCourseName = "Тест1", StudyLectures = 1 },
     };
 
     private Model selectedModel = null;
@@ -80,7 +80,7 @@
 
     private void AddOrUpdateModel()
     {
-        models.Add(new Model { CourseName = "Тест1", Lectures = 1 });
+        models.Add(new Model { StudyCourseName = "Тест1", StudyLectures = 1 });
         @*if (!string.IsNullOrEmpty(nameTextField) && !string.IsNullOrEmpty(valueTextField))
         {
             if (selectedModel == null)
@@ -105,8 +105,8 @@
     private void EditModel(Model model)
     {
         selectedModel = model;
-        nameTextField = model.CourseName;
-        valueTextField = model.Lectures.ToString();
+        nameTextField = model.StudyCourseName;
+        valueTextField = model.StudyLectures.ToString();
     }
 
     private void ShowModels()
@@ -114,7 +114,7 @@
         modelList = "Содержимое списка models:\n";
         foreach (var model in models)
         {
-            modelList += $"Name: {model.CourseName}, Value: {model.Lectures}\n";
+            modelList += $"Name: {model.StudyCourseName}, Value: {model.StudyLectures}\n";
         }
     }
 
@@ -126,10 +126,10 @@
 
     public class Model
     {
-        public string CourseName { get; set; }
-        public string CourseLanguage { get; set; }
-        public int Lectures { get; set; }
-        public int PracticalLessons { get; set; }
-        public int Total { get; set; }
+        public string StudyCourseName { get; set; }
+        public string StudyCourseLanguage { get; set; }
+        public int StudyLectures { get; set; }
+        public int StudyPracticalLessons { get; set; }
+        public int StudyTotal { get; set; }
     }
 }

@@ -3,6 +3,8 @@
 @inject NavigationManager NavigationManager
 @using System.ComponentModel.DataAnnotations
 @rendermode RenderMode.InteractiveAuto
+@using ProfessorOfTheYear.Client.Data
+@inject IDataServiceTeaching databaseinformation
 
 <style>
     .valid.modified:not([type=checkbox]) {
@@ -25,7 +27,7 @@
     <div class="form-group row mb-3">
         <label class="col-md-2 col-form-label">Выберите направление конкурса: <span class="text-danger">*</span></label>
         <div class="col-md-10">
-            <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.directioncompetition" Placeholder="Выберите направление конкурса:">
+            <InputSelect class="form-control" style="white-space: normal" @bind-Value="baseInformation.DirectionCompetition" Placeholder="Выберите направление конкурса:">
                     <option hidden selected value="0">Выберите направление конкурса:</option>
                     <option value="1">АРХИТЕКТУРА</option>
                     <option value="2">ТЕХНИКА И ТЕХНОЛОГИИ СТРОИТЕЛЬСТВА</option>
@@ -34,28 +36,28 @@
                     <option value="5">ЯДЕРНАЯ ЭНЕРГЕТИКА И ТЕХНОЛОГИИ</option>
                     <option value="6">ЭНЕРГЕТИКА И ЭЛЕКТРОТЕХНИКА</option>
                 </InputSelect>
-                <ValidationMessage For="@(() => invoice.directioncompetition)" />
+            <ValidationMessage For="@(() => baseInformation.DirectionCompetition)" />
         </div>
     </div>
 
     <div class="form-group row mb-3">
         <label class="col-md-2 col-form-label">Выберите категорию участника конкурса: <span class="text-danger">*</span></label>
         <div class="col-md-10">
-            <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.categorycompetition" Placeholder="Выберите категорию участника конкурса">
+            <InputSelect class="form-control" style="white-space: normal" @bind-Value="baseInformation.CategoryCompetition" Placeholder="Выберите категорию участника конкурса">
                 <option hidden selected value="0">Выберите категорию участника конкурса:</option>
                 <option value="1">аспиранты, адъюнкты, ординаторы, ассистенты-стажеры и работники высших учебных заведений, отраслевых и академических институтов, работники сектора промышленности (исследователи), не имеющие ученой степени</option>
                 <option value="2">докторанты и работники высших учебных заведений, отраслевых и академических институтов, работники сектора промышленности (исследователи), имеющие ученую степень кандидата наук</option>
                 <option value="3">работники высших учебных заведений, отраслевых и академических институтов, работники сектора промышленности (исследователи), имеющие ученую степень доктора наук </option>
             </InputSelect>
-            <ValidationMessage For="@(() => invoice.categorycompetition)" />
+            <ValidationMessage For="@(() => baseInformation.CategoryCompetition)" />
         </div>
     </div>
 
     <div class="form-group row mb-3">
         <label class="col-md-2 col-form-label">Полное название вашей работы: <span class="text-danger">*</span></label>
         <div class="col-md-10">
-            <InputText class="form-control" @bind-Value="invoice.Nameofwork" Placeholder="Введите полное название вашей работы" />
-            <ValidationMessage For="@(() => invoice.Nameofwork)" />
+            <InputText class="form-control" @bind-Value="baseInformation.NameWork" Placeholder="Введите полное название вашей работы" />
+            <ValidationMessage For="@(() => baseInformation.NameWork)" />
         </div>
     </div>
 
@@ -63,40 +65,40 @@
     <div class="form-group row mb-3">
         <label class="col-md-2 col-form-label">ФИО: <span class="text-danger">*</span></label>
         <div class="col-md-10">
-            <InputText class="form-control" @bind-Value="invoice.Fullname" Placeholder="Введите ФИО" />
-            <ValidationMessage For="@(() => invoice.Fullname)" />
+            <InputText class="form-control" @bind-Value="baseInformation.FullName" Placeholder="Введите ФИО" />
+            <ValidationMessage For="@(() => baseInformation.FullName)" />
         </div>
     </div>
 
     <div class="form-group row mb-3">
         <label class="col-md-2 col-form-label">Дата рождения: <span class="text-danger">*</span></label>
         <div class="col-md-10">
-            <DateInput TValue="DateOnly?" @bind-Value="invoice.InvoiceDate" />
-            <ValidationMessage For="@(() => invoice.InvoiceDate)" />
+            <DateInput TValue="DateOnly?" @bind-Value="baseInformation.InvoiceDate" />
+            <ValidationMessage For="@(() => baseInformation.InvoiceDate)" />
         </div>
     </div>
 
     <div class="form-group row mb-3">
         <label class="col-md-2 col-form-label">место работы/учебы: <span class="text-danger">*</span></label>
         <div class="col-md-10">
-            <InputText class="form-control" @bind-Value="invoice.Placeofwork" Placeholder="Введите место работы/учебы" />
-            <ValidationMessage For="@(() => invoice.Placeofwork)" />
+            <InputText class="form-control" @bind-Value="baseInformation.PlaceWork" Placeholder="Введите место работы/учебы" />
+            <ValidationMessage For="@(() => baseInformation.PlaceWork)" />
         </div>
     </div>
 
     <div class="form-group row mb-3">
         <label class="col-md-2 col-form-label">Введите должность: <span class="text-danger">*</span></label>
         <div class="col-md-10">
-            <InputText class="form-control" @bind-Value="invoice.Post" Placeholder="Введите должность" />
-            <ValidationMessage For="@(() => invoice.Post)" />
+            <InputText class="form-control" @bind-Value="baseInformation.Post" Placeholder="Введите должность" />
+            <ValidationMessage For="@(() => baseInformation.Post)" />
         </div>
     </div>
 
     <div class="form-group row mb-3">
         <label class="col-md-2 col-form-label">Введите стаж работы: <span class="text-danger">*</span></label>
         <div class="col-md-10">
-            <InputText class="form-control" @bind-Value="invoice.workexperience" Placeholder="Введите стаж работы" />
-            <ValidationMessage For="@(() => invoice.workexperience)" />
+            <InputText class="form-control" @bind-Value="baseInformation.WorkExperience" Placeholder="Введите стаж работы" />
+            <ValidationMessage For="@(() => baseInformation.WorkExperience)" />
         </div>
     </div>
 
@@ -108,12 +110,12 @@
 </EditForm>
 
 @code {
-    private Invoice invoice = new();
+    DataTeachingDTO.BaseInformation? baseInformation { get; set; } = new();
     private EditContext? editContext;
 
     protected override void OnInitialized()
     {
-        editContext = new EditContext(invoice);
+        editContext = new EditContext(baseInformation);
         base.OnInitialized();
     }
 
@@ -122,49 +124,14 @@
         base.OnParametersSet();
     }
 
-    private void PriceChanged(decimal? value)
-    {
-        
-    }
 
-    private void DiscountChanged(decimal? value)
-    {
-        
-    }
 
 
     public void HandleOnValidSubmit()
     {
+        databaseinformation.UpdateAsync(baseInformation);
         NavigationManager.NavigateTo("/formsuccess");
     }
 
-    public class Invoice
-    {
-        [Required(ErrorMessage = "Выберите направление конкурса")]
-        //[Range(1, 3, ErrorMessage = "Выберите направление конкурса")]
-        public string? directioncompetition { get; set; }
 
-        [Required(ErrorMessage = "Выберите категорию участника конкурса")]
-        //[Range(1, 3, ErrorMessage = "Выберите направление конкурса")]
-        public string? categorycompetition { get; set; }
-
-        [Required(ErrorMessage = "Введите полное название вашей работы")]
-        public string? Nameofwork { get; set; }
-
-        [Required(ErrorMessage = "Введите ФИО")]
-        public string? Fullname { get; set; }
-
-        [Required(ErrorMessage = "Укажите дату рождения")]
-        public DateOnly? InvoiceDate { get; set; }
-
-        [Required(ErrorMessage = "Введите место работы/учебы")]
-        public string? Placeofwork { get; set; }
-
-        [Required(ErrorMessage = "Введите должность")]
-        public string? Post { get; set; }
-
-        [Required(ErrorMessage = "Введите стаж работы")]
-        public string? workexperience { get; set; }
-
-    }
 }

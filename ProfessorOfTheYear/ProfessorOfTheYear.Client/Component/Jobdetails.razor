@@ -52,10 +52,10 @@
                 @foreach (var model in models)
                 {
                     <tr>
-                        <td><input @bind="model.OrganizationName" class="input-field" placeholder="название" /></td>
-                        <td><input @bind="model.OrganizationAdress" class="input-field" placeholder="место" /></td>
-                        <td><input @bind="model.Kindofactivity" class="input-field" placeholder="вид" /></td>
-                        <td><input @bind="model.Hourcount" class="input-field" placeholder="количество" /></td>
+                        <td><input @bind="model.JobOrganizationName" class="input-field" placeholder="название" /></td>
+                        <td><input @bind="model.JobOrganizationAdress" class="input-field" placeholder="место" /></td>
+                        <td><input @bind="model.JobKindActivity" class="input-field" placeholder="вид" /></td>
+                        <td><input @bind="model.JobHourCount" class="input-field" placeholder="количество" /></td>
                         <td>
                             <Button Color="ButtonColor.Danger" @onclick="() => RemoveModel(model)">X</Button>
                         </td>
@@ -73,7 +73,7 @@
     private string valueTextField = "";
     private List<Model> models = new List<Model>
     {
-        new Model { OrganizationName = "Название1"},
+        new Model { JobOrganizationName = "Название1"},
     };
 
     private Model selectedModel = null;
@@ -81,7 +81,7 @@
 
     private void AddOrUpdateModel()
     {
-        models.Add(new Model { OrganizationName = "Название1" });
+        models.Add(new Model { JobOrganizationName = "Название1" });
         @*if (!string.IsNullOrEmpty(nameTextField) && !string.IsNullOrEmpty(valueTextField))
         {
             if (selectedModel == null)
@@ -112,10 +112,9 @@
 
     public class Model
     {
-        public string OrganizationName { get; set; }
-        public string OrganizationAdress { get; set; }
-        public string Kindofactivity { get; set; }
-        public string statuscompetition { get; set; }
-        public int Hourcount { get; set; }
+        public string JobOrganizationName { get; set; }
+        public string JobOrganizationAdress { get; set; }
+        public string JobKindActivity { get; set; }
+        public int JobHourCount { get; set; }
     }
 }
