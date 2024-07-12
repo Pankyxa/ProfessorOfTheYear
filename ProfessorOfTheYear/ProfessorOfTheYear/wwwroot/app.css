@@ -173,6 +173,15 @@ h1:focus {
     align-self: stretch;
 }
 
+.block-subtitle-text {
+    color: #000000;
+    text-align: left;
+    font-size: 30px;
+    font-weight: 600;
+    position: relative;
+    align-self: stretch;
+}
+
 .block-content {
     padding: 20px;
     display: flex;
