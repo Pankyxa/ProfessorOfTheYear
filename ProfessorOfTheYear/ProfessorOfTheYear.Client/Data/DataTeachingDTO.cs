@@ -31,7 +31,47 @@ namespace ProfessorOfTheYear.Client.Data
 
             [Required(ErrorMessage = "Введите стаж работы")]
             public string? WorkExperience { get; set; }
+        }
 
+        public class ScientificInformation
+        {
+            [Required(ErrorMessage = "Выберите направление конкурса")]
+            public string? DirectionCompetition { get; set; }
+
+            [Required(ErrorMessage = "Выберите категорию участника конкурса")]
+            public string? CategoryCompetition { get; set; }
+
+            [Required(ErrorMessage = "Выберите ученое звание")]
+            public string? ScientificTitle { get; set; }
+
+            [Required(ErrorMessage = "Введите ученую степень")]
+            public string? ScientificDegree { get; set; }
+
+            [Required(ErrorMessage = "Введите научную специальность")]
+            public string? ScientificSpecialty { get; set; }
+
+            [Required(ErrorMessage = "Введите стаж научно-педагогической деятельности")]
+            public string? TeachingExperience { get; set; }
+        }
+        
+        public class LeadershipActivity
+        {
+            public int? BachelorscCount { get; set; }
+            public int? SpecialistsCount { get; set; }
+            public int? MastersCount { get; set; }
+            public int? CandidatesOfSciencesCount { get; set; }
+            public int? DoctorsOfSciencesCount { get; set; }
+            //TODO: add fields and validation
+        }
+
+        public class ScientificWorks
+        {
+            //TODO: add fields and validation 
+        }
+
+        public class EducationWorks
+        {
+            //TODO: add fields and validation 
         }
     }
 }

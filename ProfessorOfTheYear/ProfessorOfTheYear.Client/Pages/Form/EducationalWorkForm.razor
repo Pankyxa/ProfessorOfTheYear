@@ -46,7 +46,7 @@
 </div>
 
 @code {
-    private Invoice invoice = new();
+    private DataTeachingDTO.EducationWorks invoice = new();
     private EditContext? editContext;
 
     protected override void OnInitialized()
@@ -63,16 +63,5 @@
     public void Comeback()
     {
         NavigationManager.NavigateTo("/form/scientific-works");
-    }
-
-    public class Invoice
-    {
-        public int? bachelorscount { get; set; }
-
-        public int? specialistscount { get; set; }
-
-        public int? masterscount { get; set; }
-        public int? candidatesofsciencescount { get; set; }
-        public int? doctorsofsciencescount { get; set; }
     }
 }

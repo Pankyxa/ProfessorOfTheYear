@@ -2,7 +2,7 @@
 {
     public class MockDataTeaching: IDataServiceTeaching
     {
-        private static readonly List<DataTeachingDTO.BaseInformation> baseInformation=[new DataTeachingDTO.BaseInformation()];
+        private static readonly List<DataTeachingDTO.BaseInformation> baseInformation = [new DataTeachingDTO.BaseInformation()];
 
         public async Task UpdateAsync(DataTeachingDTO.BaseInformation taskItem)
         {
@@ -16,6 +16,11 @@
         public async Task<List<DataTeachingDTO.BaseInformation>> GetAllAsync()
         {
             return await Task.FromResult<List<DataTeachingDTO.BaseInformation>>(baseInformation);
+        }
+
+        public async Task<DataTeachingDTO.BaseInformation> GetFromIDAsync(int ID)
+        {
+            return await Task.FromResult<DataTeachingDTO.BaseInformation>(baseInformation.Single(bi => bi.ID == ID));
         }
     }
 }

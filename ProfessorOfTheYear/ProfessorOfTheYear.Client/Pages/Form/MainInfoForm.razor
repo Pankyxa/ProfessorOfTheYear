@@ -27,8 +27,8 @@
 
                 <div class="block-content-text">ФИО:</div>
                 <div class="input-group mb-3">
-                    <ValidationMessage For="@(() => baseInformation.FullName)" />
-                    <InputText class="form-control" @bind-Value="baseInformation.FullName" Placeholder="Введите ФИО" />
+                    <ValidationMessage For="@(() => baseInformation!.FullName)" />
+                    <InputText class="form-control" @bind-Value="baseInformation!.FullName" Placeholder="Введите ФИО" />
                 </div>
 
                 <div class="block-content-text">Дата рождения:</div>
@@ -90,7 +90,7 @@
 
     protected override void OnInitialized()
     {
-        editContext = new EditContext(baseInformation);
+        editContext = new EditContext(baseInformation!);
         base.OnInitialized();
     }
 
@@ -101,7 +101,7 @@
 
     public void HandleOnValidSubmit()
     {
-        databaseinformation.UpdateAsync(baseInformation);
+        databaseinformation.UpdateAsync(baseInformation!);
         NavigationManager.NavigateTo("/form/scientific-exp");
     }
 }
