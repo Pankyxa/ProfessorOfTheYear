@@ -1,6 +1,5 @@
 ﻿@page "/feedback"
 @rendermode InteractiveAuto
-@using System.ComponentModel.DataAnnotations
 
 <PageTitle>Обратная связь </PageTitle>
 
@@ -22,23 +21,23 @@
             <div class="form-block">
                 <div class="form-content">
                     <label class="col-md-2 form-content-title">Ваше имя</label>
-                    <div class="form-content-input">
-                        <InputText class="form-control" @bind-Value="customer.Name" />
+                    <div class="form-input w-100">
                         <ValidationMessage For="@(() => customer.Name)" />
+                        <InputText class="form-control" @bind-Value="customer.Name" />
                     </div>
                 </div>
                 <div class ="form-content">
                     <label class="col-md-2 form-content-title">Электронная почта</label>
-                    <div class="form-content-input">
-                        <InputText class="form-control" @bind-Value="customer.Address" />
+                    <div class="form-input w-100">
                         <ValidationMessage For="@(() => customer.Address)" />
+                        <InputText class="form-control" @bind-Value="customer.Address" />
                     </div>
                 </div>
                 <div class="form-content-col">
                     <label class="col-md-2 form-content-title">Ваше сообщение</label>
-                    <div class="form-content-input">
-                        <InputTextArea class="form-control" @bind-Value="customer.Message" />
+                    <div class="form-input w-100">
                         <ValidationMessage For="@(() => customer.Message)" />
+                        <InputTextArea class="form-control" @bind-Value="customer.Message" />
                     </div>
                 </div>
                 <Button Type="ButtonType.Submit" Color="ButtonColor.Success" Class="float-end">Отправить</Button>
@@ -59,18 +58,20 @@
 
     public void HandleOnValidSubmit()
     {
-        Console.WriteLine($"Customer name is {customer.Name}, address is {customer.Address}, and message is {customer.Message}");
+        Console.WriteLine($"Пользователь {customer.Name}, с электронной почтой {customer.Address} отправил сообщение: \"{customer.Message}\"");
     }
 
     public class Customer
     {
-        [Required]
-        public string Name { get; set; } = default;
+        [Required(ErrorMessage = "Укажите Ваше имя")]
+        public string? Name { get; set; } = default;
 
-        [Required]
-        public string Address { get; set; } = default;
+        [Required(ErrorMessage = "Укажите Ваш E-mail")]
+        [EmailAddress(ErrorMessage = "Указаан некорректный адрес электронной почты")]
+        public string? Address { get; set; } = default;
 
-        [Required]
-        public string Message { get; set; } = default; 
+        [Required(ErrorMessage = "Напишите сообщение поддержке сайта")]
+        [StringLength(1000, ErrorMessage = "Длина сообщения должна составлять не менее {2} и не более {1} символов.", MinimumLength = 20)]
+        public string? Message { get; set; } = default; 
     }
 }
