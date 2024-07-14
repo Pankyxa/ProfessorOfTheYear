@@ -1,0 +1,107 @@
+﻿@page "/form/base-info"
+
+@using System.ComponentModel.DataAnnotations
+@using ProfessorOfTheYear.Client.Data
+
+@inject NavigationManager NavigationManager
+@inject IDataServiceTeaching databaseinformation
+@rendermode RenderMode.InteractiveAuto
+
+<PageTitle>Форма заполнения заявки</PageTitle>
+
+<div class="block-group">
+    <div class="block">
+        <div class="block-title">
+            <div class="block-title-text">
+                Заполните заявку
+            </div>
+        </div>
+
+        <EditForm EditContext="@editContext" OnValidSubmit="HandleOnValidSubmit" class="w-100">
+            <DataAnnotationsValidator />
+
+            <div class="block-content block-content-border">
+                <div class="block-subtitle-text">
+                    Основная информация
+                </div>
+
+                <div class="block-content-text">ФИО:</div>
+                <div class="input-group mb-3">
+                    <ValidationMessage For="@(() => baseInformation.FullName)" />
+                    <InputText class="form-control" @bind-Value="baseInformation.FullName" Placeholder="Введите ФИО" />
+                </div>
+
+                <div class="block-content-text">Дата рождения:</div>
+                <div class="input-group mb-3">
+                    <ValidationMessage For="@(() => baseInformation.InvoiceDate)" />
+                    <DateInput TValue="DateOnly?" @bind-Value="baseInformation.InvoiceDate" />
+                </div>
+
+                <div class="block-content-text">Домашний адрес:</div>
+                <div class="input-group mb-3">
+                    <ValidationMessage For="@(() => baseInformation.HomeAdress)" />
+                    <InputText class="form-control" @bind-Value="baseInformation.HomeAdress" Placeholder="Введите домашний адрес" />
+                </div>
+
+                <div class="block-content-text">Контактный телефон:</div>
+                <div class="input-group mb-3">
+                    <ValidationMessage For="@(() => baseInformation.PhoneNumber)" />
+                    <InputText class="form-control" @bind-Value="baseInformation.PhoneNumber" Placeholder="Введите контактный телефон" />
+                </div>
+
+                <div class="block-content-text">Место работы/учебы:</div>
+                <div class="input-group mb-3">
+                    <ValidationMessage For="@(() => baseInformation.PlaceWork)" />
+                    <InputText class="form-control" @bind-Value="baseInformation.PlaceWork" Placeholder="Введите место работы/учебы" />
+                </div>
+
+                <div class="block-content-text">Полное название вашей работы:</div>
+                <div class="input-group mb-3">
+                    <ValidationMessage For="@(() => baseInformation.NameWork)" />
+                    <InputText class="form-control" @bind-Value="baseInformation.NameWork" Placeholder="Введите полное название вашей работы" />
+                </div>
+
+                <div class="block-content-text">Должность:</div>
+                <div class="input-group mb-3">
+                    <ValidationMessage For="@(() => baseInformation.Post)" />
+                    <InputText class="form-control" @bind-Value="baseInformation.Post" Placeholder="Введите должность" />
+                </div>
+
+                <div class="block-content-text">Стаж работы:</div>
+                <div class="input-group mb-3">
+                    <ValidationMessage For="@(() => baseInformation.WorkExperience)" />
+                    <InputText class="form-control" @bind-Value="baseInformation.WorkExperience" Placeholder="Введите стаж работы" />
+                </div>
+            </div>
+
+            <div class="d-flex flex-row gap-2 mt-2 mb-2 justify-content-center">
+                <Button Type="ButtonType.Submit"
+                        Color="ButtonColor.Primary">
+                    Продолжить
+                </Button>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    DataTeachingDTO.BaseInformation? baseInformation { get; set; } = new();
+    private EditContext? editContext;
+
+    protected override void OnInitialized()
+    {
+        editContext = new EditContext(baseInformation);
+        base.OnInitialized();
+    }
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+    }
+
+    public void HandleOnValidSubmit()
+    {
+        databaseinformation.UpdateAsync(baseInformation);
+        NavigationManager.NavigateTo("/form/scientific-exp");
+    }
+}

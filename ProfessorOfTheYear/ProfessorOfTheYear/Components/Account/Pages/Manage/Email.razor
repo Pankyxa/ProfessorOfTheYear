@@ -18,7 +18,7 @@
 
 <StatusMessage Message="@message"/>
 <div class="row">
-    <div class="col-md-6">
+    <div class="col">
         <form @onsubmit="OnSendEmailVerificationAsync" @formname="send-verification" id="send-verification-form" method="post">
             <AntiforgeryToken />
         </form>
@@ -52,8 +52,7 @@
             </div>
             <Button 
                 Type="ButtonType.Submit"
-                Color="ButtonColor.Primary"
-                Class="w-100">
+                Color="ButtonColor.Primary">
                     Изменить адрес электронной почты
             </Button>
         </EditForm>

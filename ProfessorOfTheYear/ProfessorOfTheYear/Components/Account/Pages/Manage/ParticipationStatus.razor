@@ -8,18 +8,19 @@
 <h3>Статус участника</h3>
 
 <div class="row">
-    <div class="col-md-6">
-        @* <div class="alert alert-primary" role="alert">
+    <div class="col">
+        <div class="alert alert-primary" role="alert">
             Ваш текущий статус — <strong>Посетитель</strong>. Чтобы получить статус <strong>Участник</strong>, вам нужно подать заявку
             и дождаться решения администрации. Вы можете сделать это с помощью кнопки ниже.
         </div>
         <Button 
             Type="ButtonType.Link"   
             Color="ButtonColor.Success"
-            To="#">
+            To="/form/base-info">
                 Подать заявку
         </Button>
         
+        <hr />
 
         <div class="alert alert-secondary" role="alert">
             Заявка на участие создана и <strong>ожидает заполнения</strong>.
@@ -37,6 +38,7 @@
                 Удалить заявку
         </Button>
 
+        <hr />
 
         <div class="alert alert-warning" role="alert">
             Заявка на участие была отправлена <strong>на рассмотрение администрацией</strong>. Пожалуйста, дождитесь решения.
@@ -46,16 +48,18 @@
             Color="ButtonColor.Danger"
             To="#">
                 Отозвать заявку
-        </Button> *@
+        </Button>
 
-        @* <div class="alert alert-success" role="alert">
+        <hr />
+
+        <div class="alert alert-success" role="alert">
             Поздравляем! Наши эксперты одобрили вашу заявку на участие в конкурсе. Вы получаете статус <strong>Участник</strong>. 
             Теперь вам доступна анкета участника конкурса. Нажмите кнопку ниже, чтобы начать заполнение.
         </div>
         <Button 
             Type="ButtonType.Link"
             Color="ButtonColor.Primary"
-            To="#">
+                To="Account/ParticipantEditForm">
                 Заполнить анкету педагога
         </Button>
         <Button 
@@ -63,8 +67,9 @@
             Color="ButtonColor.Danger"
             To="#">
                 Отозвать заявку
-        </Button> *@
+        </Button>
 
+        <hr />
 
         <div class="alert alert-danger" role="alert">
             К сожалению, наши специалисты <strong>отклонили заявку</strong> на ваше участие. Однако мы предоставляем возможность повторной отправки,

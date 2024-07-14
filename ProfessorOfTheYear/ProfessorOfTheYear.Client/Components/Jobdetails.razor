@@ -1,0 +1,120 @@
+﻿
+@*<input @bind="nameTextField" placeholder="Name" />
+<input type="number" @bind="valueTextField" placeholder="Value" />
+*@
+
+
+<style>
+    .adaptive-table {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .table-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .column-header {
+        font-weight: bold;
+        background-color: #f0f0f0;
+        padding: 5px;
+    }
+
+    .input-field {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+
+</style>
+
+<div class="adaptive-table">
+    <div class="table-container">
+        <h5>
+            Сведения о работе, выполняемой участником конкурса в области
+            научно-педагогической деятельности по совместительству (не по основному месту работы)
+            в высшем учебном заведении, академическом институте, отраслевом
+            научно-исследовательском институте, профессиональной образовательной организации, общеобразовательной организации за предыдущий учебный год:
+        </h5>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="column-header">Название организации / должность / ставка</th>
+                    <th class="column-header">Место нахождения (субъект РФ, зарубежье)и</th>
+                    <th class="column-header">Вид деятельности (преподавательская)</th>
+                    <th class="column-header">Количество часов</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var model in models)
+                {
+                    <tr>
+                        <td><input @bind="model.JobOrganizationName" class="input-field" placeholder="название" /></td>
+                        <td><input @bind="model.JobOrganizationAdress" class="input-field" placeholder="место" /></td>
+                        <td><input @bind="model.JobKindActivity" class="input-field" placeholder="вид" /></td>
+                        <td><input @bind="model.JobHourCount" class="input-field" placeholder="количество" /></td>
+                        <td>
+                            <Button Color="ButtonColor.Danger" @onclick="() => RemoveModel(model)">X</Button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<Button Color="ButtonColor.Primary" @onclick="AddOrUpdateModel"> Добавить </Button>
+<pre>@modelList</pre>
+
+@code {
+    private string nameTextField = "";
+    private string valueTextField = "";
+    private List<Model> models = new List<Model>
+    {
+        new Model { JobOrganizationName = "Название1"},
+    };
+
+    private Model selectedModel = null;
+    private string modelList = "";
+
+    private void AddOrUpdateModel()
+    {
+        models.Add(new Model { JobOrganizationName = "Название1" });
+        @*if (!string.IsNullOrEmpty(nameTextField) && !string.IsNullOrEmpty(valueTextField))
+        {
+            if (selectedModel == null)
+            {
+                models.Add(new Model { CourseName = nameTextField, Lectures = int.Parse(valueTextField) });
+            }
+            else
+            {
+                selectedModel.CourseName = nameTextField;
+                selectedModel.Lectures = int.Parse(valueTextField);
+                selectedModel = null;
+            }
+            ClearInputFields();
+        }*@
+    }
+
+    private void RemoveModel(Model model)
+    {
+        models.Remove(model);
+    }
+
+
+    private void ClearInputFields()
+    {
+        nameTextField = "";
+        valueTextField = "";
+    }
+
+    public class Model
+    {
+        public string JobOrganizationName { get; set; }
+        public string JobOrganizationAdress { get; set; }
+        public string JobKindActivity { get; set; }
+        public int JobHourCount { get; set; }
+    }
+}

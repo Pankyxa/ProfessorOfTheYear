@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ProfessorOfTheYear.Client.Data;
 using ProfessorOfTheYear.Client.Pages;
 using ProfessorOfTheYear.Components;
 using ProfessorOfTheYear.Components.Account;
@@ -17,6 +18,8 @@ builder.Services.AddCascadingAuthenticationState();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>();
+
+builder.Services.AddScoped<IDataServiceTeaching, MockDataTeaching>();
 
 builder.Services.AddAuthentication(options =>
     {

@@ -1,0 +1,145 @@
+﻿@page "/form/scientific-exp"
+
+@using System.ComponentModel.DataAnnotations
+
+@inject NavigationManager NavigationManager
+@rendermode RenderMode.InteractiveAuto
+
+<PageTitle>Форма заполнения заявки</PageTitle>
+
+<div class="block-group">
+    <div class="block">
+        <div class="block-title">
+            <div class="block-title-text">
+                Заполните заявку
+            </div>
+        </div>
+
+        <EditForm EditContext="@editContext" OnValidSubmit="HandleOnValidSubmit" class="w-100">
+            <DataAnnotationsValidator />
+
+            <div class="block-content block-content-border">
+                <div class="block-subtitle-text">
+                    Научно-педагогическая деятельность
+                </div>
+
+                <div class="block-content-text">Направление конкурса:</div>
+                <div class="input-group mb-3">
+                    <ValidationMessage For="@(() => invoice.directionCompetition)" />
+                    <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.directionCompetition">
+                        <option hidden selected value="0">Выберите направление конкурса</option>
+                        <option value="1">АРХИТЕКТУРА</option>
+                        <option value="2">ТЕХНИКА И ТЕХНОЛОГИИ СТРОИТЕЛЬСТВА</option>
+                        <option value="3">СТРОИТЕЛЬСТВО И АРХИТЕКТУРА</option>
+                        <option value="4">ЭЛЕКТРО - И ТЕПЛОЭНЕРГЕТИКА</option>
+                        <option value="5">ЯДЕРНАЯ ЭНЕРГЕТИКА И ТЕХНОЛОГИИ</option>
+                        <option value="6">ЭНЕРГЕТИКА И ЭЛЕКТРОТЕХНИКА</option>
+                    </InputSelect>
+                </div>
+
+                <div class="block-content-text">Категорию участника конкурса:</div>
+                <div class="input-group mb-3">
+                    <ValidationMessage For="@(() => invoice.categoryCompetition)" />
+                    <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.categoryCompetition">
+                        <option hidden selected value="0">Выберите категорию участника конкурса</option>
+                        <option value="1">
+                            аспиранты, адъюнкты, ординаторы, ассистенты-стажеры и работники высших учебных заведений, отраслевых и академических институтов, 
+                            работники сектора промышленности (исследователи), не имеющие ученой степени
+                        </option>
+                        <option value="2">
+                            докторанты и работники высших учебных заведений, отраслевых и академических институтов, 
+                            работники сектора промышленности (исследователи), имеющие ученую степень кандидата наук
+                        </option>
+                        <option value="3">
+                            работники высших учебных заведений, отраслевых и академических институтов, 
+                            работники сектора промышленности (исследователи), имеющие ученую степень доктора наук 
+                        </option>
+                    </InputSelect>
+                </div>
+
+                <div class="block-content-text">Ученое звание:</div>
+                <div class="input-group mb-3">
+                    <ValidationMessage For="@(() => invoice.scientificTitle)" />
+                    <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.scientificTitle">
+                        <option hidden selected value="0">Выберите ученое звание:</option>
+                        <option value="1">Нет</option>
+                        <option value="2">Доцент</option>
+                        <option value="3">Профессор</option>
+                    </InputSelect>
+                </div>
+
+                <div class="block-content-text">Ученая степень:</div>
+                <div class="input-group mb-3">
+                    <ValidationMessage For="@(() => invoice.scientificDegree)" />
+                    <InputText class="form-control" @bind-Value="invoice.scientificDegree" Placeholder="Введите ученую степень" />
+                </div>
+
+                <div class="block-content-text">Научная специальность (по классификации ВАК):</div>
+                <div class="input-group mb-3">
+                    <ValidationMessage For="@(() => invoice.scientificSpecialty)" />
+                    <InputText class="form-control" @bind-Value="invoice.scientificSpecialty" Placeholder="Введите научную специальность" />
+                </div>
+
+                <div class="block-content-text">Стаж научно-педагогической деятельности по трудовой книжке:</div>
+                <div class="input-group mb-3">
+                    <ValidationMessage For="@(() => invoice.teachingExperience)" />
+                    <InputText class="form-control" @bind-Value="invoice.teachingExperience" Placeholder="Введите стаж научно-педагогической деятельности" />
+                </div>
+            </div>
+
+            <div class="d-flex flex-row gap-2 mt-2 mb-2 justify-content-center">
+                <Button @onclick="Comeback"
+                        Color="ButtonColor.Secondary">
+                    Вернуться назад
+                </Button>
+                <Button Type="ButtonType.Submit"
+                        Color="ButtonColor.Primary">
+                    Продолжить
+                </Button>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private Invoice invoice = new();
+    private EditContext? editContext;
+
+    protected override void OnInitialized()
+    {
+        editContext = new EditContext(invoice);
+        base.OnInitialized();
+    }
+
+    public void HandleOnValidSubmit()
+    {
+        NavigationManager.NavigateTo("/form/leadership-work");
+    }
+
+    public void Comeback()
+    {
+        NavigationManager.NavigateTo("/form/base-info");
+    }
+
+    public class Invoice
+    {
+        [Required(ErrorMessage = "Выберите направление конкурса")]
+        public string? directionCompetition { get; set; }
+
+        [Required(ErrorMessage = "Выберите категорию участника конкурса")]
+        public string? categoryCompetition { get; set; }
+
+        [Required(ErrorMessage = "Выберите ученое звание")]
+        public string? scientificTitle { get; set; }
+
+        [Required(ErrorMessage = "Введите ученую степень")]
+        public string? scientificDegree { get; set; }
+
+        [Required(ErrorMessage = "Введите научную специальность")]
+        public string? scientificSpecialty { get; set; }
+
+        [Required(ErrorMessage = "Введите стаж научно-педагогической деятельности")]
+        public string? teachingExperience { get; set; }
+
+    }
+}
