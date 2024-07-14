@@ -1,0 +1,78 @@
+﻿@page "/form/educational-work"
+
+@using ProfessorOfTheYear.Client.Model
+@using System.ComponentModel.DataAnnotations
+
+@inject NavigationManager NavigationManager
+@rendermode RenderMode.InteractiveAuto
+
+<PageTitle>Форма заполнения заявки</PageTitle>
+
+<div class="block-group">
+    <div class="block">
+        <div class="block-title">
+            <div class="block-title-text">
+                Заполните заявку
+            </div>
+        </div>
+
+        <EditForm EditContext="@editContext" OnValidSubmit="HandleOnValidSubmit" class="w-100">
+            <DataAnnotationsValidator />
+
+            <div class="block-content block-content-border">
+                <ProfessorOfTheYear.Client.Components.Onlinecourse />
+            </div>
+
+            <div class="block-content block-content-border">
+                <ProfessorOfTheYear.Client.Components.Participantawards />
+            </div>
+
+            <div class="block-content block-content-border">
+                <ProfessorOfTheYear.Client.Components.Profdevelopment/>
+            </div>
+
+            <div class="d-flex flex-row gap-2 mt-2 mb-2 justify-content-center">
+                <Button @onclick="Comeback"
+                        Color="ButtonColor.Secondary">
+                    Вернуться назад
+                </Button>
+                <Button Type="ButtonType.Submit"
+                        Color="ButtonColor.Success">
+                    Отправить
+                </Button>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private Invoice invoice = new();
+    private EditContext? editContext;
+
+    protected override void OnInitialized()
+    {
+        editContext = new EditContext(invoice);
+        base.OnInitialized();
+    }
+
+    public void HandleOnValidSubmit()
+    {
+        NavigationManager.NavigateTo("/form-success");
+    }
+
+    public void Comeback()
+    {
+        NavigationManager.NavigateTo("/form/scientific-works");
+    }
+
+    public class Invoice
+    {
+        public int? bachelorscount { get; set; }
+
+        public int? specialistscount { get; set; }
+
+        public int? masterscount { get; set; }
+        public int? candidatesofsciencescount { get; set; }
+        public int? doctorsofsciencescount { get; set; }
+    }
+}
