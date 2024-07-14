@@ -4,86 +4,48 @@
 
 <PageTitle>Обратная связь </PageTitle>
 
-<span style="display: block; padding: 4px; border-bottom: 1px solid black;">
-    <h2 style="padding-left: 30px">Обратная связь</h2>
-</span
-<span style="display: block; padding: 2px; border-bottom: 1px solid black;padding-left: 30px;padding-top:30px;padding-right:100px;">
-    <h3 style="padding-bottom:50px;">Контакты организаторов конкурса</h3>
-    <h3></h3>
-<div class="row g-2">
-    <div class="col-6 col-md-6 mb-3">
-        <Card Class="h-100">
-            <CardBody>
-                <CardTitle>Иванов Иван Иванович</CardTitle>
-                <CardText>+7 808 808 88 00</CardText>
-                <CardText>Ivanoni@gmail.com</CardText>
-            </CardBody>
-        </Card>
-    </div>
-    <div class="col-6 col-md-6 mb-3">
-        <Card Class="h-100">
-            <CardBody>
-                <CardTitle>Петров Петр Петрович</CardTitle>
-                <CardText>+7 909 909 99 00</CardText>
-                <CardText>Petrov@gmail.com</CardText>
-            </CardBody>
-        </Card>
-    </div>
-    <div class="col-6 col-md-6 mb-3">
-        <Card Class="h-100">
-            <CardBody>
-                <CardTitle>Сидоров Сидор Сидорович</CardTitle>
-                <CardText>+7 910 910 10 00</CardText>
-                <CardText>Sidorov@gmail.com</CardText>
-            </CardBody>
-        </Card>
-    </div>
-    <div class="col-6 col-md-6 mb-3">
-        <Card Class="h-100">
-            <CardBody>
-                <CardTitle>Алексеев Алексей Алексеевич</CardTitle>
-                <CardText>+7 911 911 11 00</CardText>
-                <CardText>Alekseev@gmail.com</CardText>
-            </CardBody>
-        </Card>
+<div class="block-title">
+    <div class="block-title-text">
+        Обратная связь
     </div>
 </div>
-</span>
-<span style="display: block; padding-left: 30px; padding-top: 30px; padding-right: 100px;">
-    <h3>Обратиться в поддержку</h3>
-    <h6>Здесь вы можете оставить нам сообщение</h6>
-    <EditForm EditContext="@_editContext" OnValidSubmit="HandleOnValidSubmit" style="padding-top: 30px;">
-        <DataAnnotationsValidator />
-        <div class="form-group row mb-3">
-            <label class="col-md-2 col-form-label">Ваше имя:</label>
-            <div class="col-md-10">
-                <InputText class="form-control" @bind-Value="customer.Name" />
-                <ValidationMessage For="@(() => customer.Name)" />
-            </div>
+<div class="block-group">
+    <div class="block">
+        <div class="block-content">
+            <div class="title-page">Задать вопрос</div>
+            <div class="discription-page">Здесь вы можете оставить нам сообщение</div>
         </div>
-
-        <div class="form-group row mb-3">
-            <label class="col-md-2 col-form-label">Электронная почта:</label>
-            <div class="col-md-10">
-                <InputText class="form-control" @bind-Value="customer.Address" />
-                <ValidationMessage For="@(() => customer.Address)" />
-            </div>
-        </div>
-
-        <div class="form-group row mb-3">
-            <label class="col-md-2 col-form-label">Ваше сообщение:</label>
-            <div class="col-md-10 overflow-auto"> 
-                <textarea class="form-control" rows="5" @bind="customer.Message"></textarea>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-12 text-right">
+    </div>
+    <div class="block">
+        <EditForm EditContext="@_editContext" OnValidSubmit="HandleOnValidSubmit" class="w-100">
+            <DataAnnotationsValidator />
+            <div class="form-block">
+                <div class="form-content">
+                    <label class="col-md-2 form-content-title">Ваше имя</label>
+                    <div class="form-content-input">
+                        <InputText class="form-control" @bind-Value="customer.Name" />
+                        <ValidationMessage For="@(() => customer.Name)" />
+                    </div>
+                </div>
+                <div class ="form-content">
+                    <label class="col-md-2 form-content-title">Электронная почта</label>
+                    <div class="form-content-input">
+                        <InputText class="form-control" @bind-Value="customer.Address" />
+                        <ValidationMessage For="@(() => customer.Address)" />
+                    </div>
+                </div>
+                <div class="form-content-col">
+                    <label class="col-md-2 form-content-title">Ваше сообщение</label>
+                    <div class="form-content-input">
+                        <InputTextArea class="form-control" @bind-Value="customer.Message" />
+                        <ValidationMessage For="@(() => customer.Message)" />
+                    </div>
+                </div>
                 <Button Type="ButtonType.Submit" Color="ButtonColor.Success" Class="float-end">Отправить</Button>
             </div>
-        </div>
-    </EditForm>
-</span>
+        </EditForm>
+    </div>
+</div>
 
 @code {
     private Customer customer = new();
