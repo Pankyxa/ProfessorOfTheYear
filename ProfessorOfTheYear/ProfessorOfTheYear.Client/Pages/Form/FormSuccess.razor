@@ -1,5 +1,7 @@
 ﻿@page "/form-success"
 
+@attribute [Authorize]
+
 <PageTitle>Успех</PageTitle>
 
 <div class="block-group">
@@ -8,5 +10,10 @@
             <div class="block-title-text">Ваша заявка успешно отправлена</div>
             <div class="block-subtitle-text">Следить за ее статусом можно в личном кабинете</div>
         </div>
+        <Button Type="ButtonType.Link"
+                Color="ButtonColor.Primary"
+                To="/Account/Manage#start">
+            В личный кабинет
+        </Button>
     </div>
 </div>

@@ -1,10 +1,10 @@
 ﻿@page "/form/leadership-activity"
 
-@using ProfessorOfTheYear.Client.Model
-@using System.ComponentModel.DataAnnotations
-
 @inject NavigationManager NavigationManager
-@rendermode RenderMode.InteractiveAuto
+
+@rendermode InteractiveAuto
+
+@attribute [Authorize]
 
 <PageTitle>Форма заполнения заявки</PageTitle>
 
@@ -25,24 +25,24 @@
                 </div>
 
                 <div class="block-content-text">Защитившиеся бакалавры:</div>
-                <div class="input-group mb-3">
+                <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.BachelorscCount)" />
                     <InputNumber class="form-control" @bind-Value="invoice.BachelorscCount" Placeholder="Введите количество" />
                 </div>
 
                 <div class="block-content-text">Защитившиеся специалисты:</div>
-                <div class="input-group mb-3">
+                <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.SpecialistsCount)" />
                     <InputNumber class="form-control" @bind-Value="invoice.SpecialistsCount" Placeholder="Введите количество" />
                 </div>
 
                 <div class="block-content-text">Защитившиеся магистры:</div>
-                <div class="input-group mb-3">
+                <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.MastersCount)" />
                     <InputNumber class="form-control" @bind-Value="invoice.MastersCount" Placeholder="Введите количество" />
                 </div>
 
-                <ProfessorOfTheYear.Client.Components.Studyload />
+                <Studyload />
             </div>
 
             <div class="block-content block-content-border">
@@ -51,18 +51,18 @@
                 </div>
 
                 <div class="block-content-text">Количество защитившихся кандидатов наук:</div>
-                <div class="input-group mb-3">
+                <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.CandidatesOfSciencesCount)" />
                     <InputNumber class="form-control" @bind-Value="invoice.CandidatesOfSciencesCount" Placeholder="Введите количество" />
                 </div>
 
                 <div class="block-content-text">Количество защитившихся докторов наук:</div>
-                <div class="input-group mb-3">
+                <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.DoctorsOfSciencesCount)" />
                     <InputNumber class="form-control" @bind-Value="invoice.DoctorsOfSciencesCount" Placeholder="Введите количество" />
                 </div>
 
-                <ProfessorOfTheYear.Client.Components.Studentlist />
+                <Studentlist />
             </div>
 
             <div class="d-flex flex-row gap-2 mt-2 mb-2 justify-content-center">

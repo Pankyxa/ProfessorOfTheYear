@@ -15,49 +15,45 @@
 <PageTitle>Управление электронной почтой</PageTitle>
 
 <h3>Управление электронной почтой</h3>
-
 <StatusMessage Message="@message"/>
-<div class="row">
-    <div class="col">
-        <form @onsubmit="OnSendEmailVerificationAsync" @formname="send-verification" id="send-verification-form" method="post">
-            <AntiforgeryToken />
-        </form>
-        <EditForm Model="Input" FormName="change-email" OnValidSubmit="OnValidSubmitAsync" method="post">
-            <DataAnnotationsValidator />
 
-            @if (isEmailConfirmed)
-            {
-                <div class="form-input mb-3 input-group">
-                    <InputText @bind-Value="@email" class="form-control" placeholder="Электронная почта" disabled />
-                    <div class="input-group-append">
-                        <span class="h-100 input-group-text text-success font-weight-bold">✓</span>
-                    </div>
-                </div>
-            }
-            else
-            {
-                <div class="form-input mb-3">
-                    <InputText @bind-Value="@email" class="form-control" placeholder="Электронная почта" disabled />
-                    <Button 
-                        Type="ButtonType.Submit"
-                        Color="ButtonColor.Link"
-                        form="send-verification-form">
-                            Отправить подтверждение на электронную почту
-                    </Button>
-                </div>
-            }
-            <div class="form-input mb-3">
-                <ValidationMessage For="() => Input.NewEmail" class="text-danger" />
-                <InputText @bind-Value="Input.NewEmail" class="form-control" autocomplete="email" aria-required="true" placeholder="Новая электронная почта" />
+<form @onsubmit="OnSendEmailVerificationAsync" @formname="send-verification" id="send-verification-form" method="post">
+    <AntiforgeryToken />
+</form>
+<EditForm Model="Input" FormName="change-email" OnValidSubmit="OnValidSubmitAsync" method="post">
+    <DataAnnotationsValidator />
+
+    @if (isEmailConfirmed)
+    {
+        <div class="form-input mb-3 input-group">
+            <InputText @bind-Value="@email" class="form-control" placeholder="Электронная почта" disabled />
+            <div class="input-group-append">
+                <span class="h-100 input-group-text text-success font-weight-bold">✓</span>
             </div>
+        </div>
+    }
+    else
+    {
+        <div class="form-input mb-3">
+            <InputText @bind-Value="@email" class="form-control" placeholder="Электронная почта" disabled />
             <Button 
                 Type="ButtonType.Submit"
-                Color="ButtonColor.Primary">
-                    Изменить адрес электронной почты
+                Color="ButtonColor.Link"
+                form="send-verification-form">
+                    Отправить подтверждение на электронную почту
             </Button>
-        </EditForm>
+        </div>
+    }
+    <div class="form-input mb-3">
+        <ValidationMessage For="() => Input.NewEmail" class="text-danger" />
+        <InputText @bind-Value="Input.NewEmail" class="form-control" autocomplete="email" aria-required="true" placeholder="Новая электронная почта" />
     </div>
-</div>
+    <Button 
+        Type="ButtonType.Submit"
+        Color="ButtonColor.Primary">
+            Изменить адрес электронной почты
+    </Button>
+</EditForm>
 
 @code {
     private string? message;

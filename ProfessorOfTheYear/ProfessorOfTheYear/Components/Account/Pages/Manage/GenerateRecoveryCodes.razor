@@ -30,16 +30,14 @@ else
             используемый в приложении для проверки подлинности, вам следует <a href="Account/Manage/ResetAuthenticator">сбросить ключи для проверки подлинности.</a>
         </p>
     </div>
-    <div>
-        <form @formname="generate-recovery-codes" @onsubmit="OnSubmitAsync" method="post">
-            <AntiforgeryToken />
-            <Button 
-                Type="ButtonType.Submit"
-                Color="ButtonColor.Danger">
-                    Генерировать коды восстановления
-            </Button>
-        </form>
-    </div>
+    <EditForm FormName="generate-recovery-codes" OnValidSubmit="OnSubmitAsync" method="post">
+        <AntiforgeryToken />
+        <Button 
+            Type="ButtonType.Submit"
+            Color="ButtonColor.Danger">
+                Генерировать коды восстановления
+        </Button>
+    </EditForm>
 }
 
 @code {

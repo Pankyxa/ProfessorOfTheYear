@@ -12,9 +12,8 @@
 
 <PageTitle>Удаление персональных данных</PageTitle>
 
-<StatusMessage Message="@message" />
-
 <h3>Удаление персональных данных</h3>
+<StatusMessage Message="@message" />
 
 <div class="alert alert-warning" role="alert">
     <p>
@@ -22,24 +21,22 @@
     </p>
 </div>
 
-<div>
-    <EditForm Model="Input" FormName="delete-user" OnValidSubmit="OnValidSubmitAsync" method="post">
-        <DataAnnotationsValidator />
-        <ValidationSummary class="text-danger" role="alert" />
-        @if (requirePassword)
-        {
-            <div class="form-input mb-3">
-                <ValidationMessage For="() => Input.Password" class="text-danger" />
-                <InputText type="password" @bind-Value="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Пароль" />
-            </div>
-        }
-        <Button 
-            Type="ButtonType.Submit"
-            Color="ButtonColor.Danger">
-                Удалить мой аккаунт
-        </Button>
-    </EditForm>
-</div>
+<EditForm Model="Input" FormName="delete-user" OnValidSubmit="OnValidSubmitAsync" method="post">
+    <DataAnnotationsValidator />
+    <ValidationSummary class="text-danger" role="alert" />
+    @if (requirePassword)
+    {
+        <div class="form-input mb-3">
+            <ValidationMessage For="() => Input.Password" class="text-danger" />
+            <InputText type="password" @bind-Value="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="Пароль" />
+        </div>
+    }
+    <Button 
+        Type="ButtonType.Submit"
+        Color="ButtonColor.Danger">
+            Удалить мой аккаунт
+    </Button>
+</EditForm>
 
 @code {
     private string? message;

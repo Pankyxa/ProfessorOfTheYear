@@ -11,8 +11,9 @@
 
 <PageTitle>Сброс ключа аутентификации</PageTitle>
 
-<StatusMessage />
 <h3>Сброс ключа аутентификации</h3>
+<StatusMessage />
+
 <div class="alert alert-warning" role="alert">
     <p>
         <span class="glyphicon glyphicon-warning-sign"></span>
@@ -24,14 +25,14 @@
     </p>
 </div>
 <div>
-    <form @formname="reset-authenticator" @onsubmit="OnSubmitAsync" method="post">
+    <EditForm FormName="reset-authenticator" OnValidSubmit="OnSubmitAsync" method="post">
         <AntiforgeryToken />
         <Button 
             Type="ButtonType.Submit"
             Color="ButtonColor.Danger">
                 Сбросить ключ
         </Button>
-    </form>
+    </EditForm>
 </div>
 
 @code {

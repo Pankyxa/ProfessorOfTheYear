@@ -1,10 +1,10 @@
 ﻿@page "/form/scientific-works"
 
-@using ProfessorOfTheYear.Client.Model
-@using System.ComponentModel.DataAnnotations
-
 @inject NavigationManager NavigationManager
-@rendermode RenderMode.InteractiveAuto
+
+@rendermode InteractiveAuto
+
+@attribute [Authorize]
 
 <PageTitle>Форма заполнения заявки</PageTitle>
 
@@ -20,15 +20,15 @@
             <DataAnnotationsValidator />
 
             <div class="block-content block-content-border">
-                <ProfessorOfTheYear.Client.Components.Jobdetails />
+                <Jobdetails />
             </div>
 
             <div class="block-content block-content-border">
-                <ProfessorOfTheYear.Client.Components.Worklist />
+                <Worklist />
             </div>
 
             <div class="block-content block-content-border">
-                <ProfessorOfTheYear.Client.Components.Workshoplist />
+                <Workshoplist />
             </div>
 
             <div class="d-flex flex-row gap-2 mt-2 mb-2 justify-content-center">

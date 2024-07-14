@@ -1,9 +1,10 @@
 ﻿@page "/form/scientific-exp"
 
-@using System.ComponentModel.DataAnnotations
-
 @inject NavigationManager NavigationManager
-@rendermode RenderMode.InteractiveAuto
+
+@rendermode InteractiveAuto
+
+@attribute [Authorize]
 
 <PageTitle>Форма заполнения заявки</PageTitle>
 
@@ -24,7 +25,7 @@
                 </div>
 
                 <div class="block-content-text">Направление конкурса:</div>
-                <div class="input-group mb-3">
+                <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.DirectionCompetition)" />
                     <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.DirectionCompetition">
                         <option hidden selected value="0">Выберите направление конкурса</option>
@@ -38,7 +39,7 @@
                 </div>
 
                 <div class="block-content-text">Категорию участника конкурса:</div>
-                <div class="input-group mb-3">
+                <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.CategoryCompetition)" />
                     <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.CategoryCompetition">
                         <option hidden selected value="0">Выберите категорию участника конкурса</option>
@@ -58,7 +59,7 @@
                 </div>
 
                 <div class="block-content-text">Ученое звание:</div>
-                <div class="input-group mb-3">
+                <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.ScientificTitle)" />
                     <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.ScientificTitle">
                         <option hidden selected value="0">Выберите ученое звание:</option>
@@ -69,19 +70,19 @@
                 </div>
 
                 <div class="block-content-text">Ученая степень:</div>
-                <div class="input-group mb-3">
+                <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.ScientificDegree)" />
                     <InputText class="form-control" @bind-Value="invoice.ScientificDegree" Placeholder="Введите ученую степень" />
                 </div>
 
                 <div class="block-content-text">Научная специальность (по классификации ВАК):</div>
-                <div class="input-group mb-3">
+                <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.ScientificSpecialty)" />
                     <InputText class="form-control" @bind-Value="invoice.ScientificSpecialty" Placeholder="Введите научную специальность" />
                 </div>
 
                 <div class="block-content-text">Стаж научно-педагогической деятельности по трудовой книжке:</div>
-                <div class="input-group mb-3">
+                <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.TeachingExperience)" />
                     <InputText class="form-control" @bind-Value="invoice.TeachingExperience" Placeholder="Введите стаж научно-педагогической деятельности" />
                 </div>
@@ -113,7 +114,7 @@
 
     public void HandleOnValidSubmit()
     {
-        NavigationManager.NavigateTo("/form/leadership-work");
+        NavigationManager.NavigateTo("/form/leadership-activity");
     }
 
     public void Comeback()
