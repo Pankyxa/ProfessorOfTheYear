@@ -110,7 +110,7 @@ h1:focus {
 @media (max-width: 992px) {      
     .nav-underline {
         margin: 0 10px;
-        gap: 7px;
+        gap: 5px;
     }
     
     .min-logo {
@@ -182,6 +182,15 @@ h1:focus {
     font-family: "Inter-ExtraBold", sans-serif;
     font-size: 40px;
     font-weight: 800;
+    position: relative;
+    align-self: stretch;
+}
+
+.block-subtitle-text {
+    color: #000000;
+    text-align: left;
+    font-size: 30px;
+    font-weight: 600;
     position: relative;
     align-self: stretch;
 }

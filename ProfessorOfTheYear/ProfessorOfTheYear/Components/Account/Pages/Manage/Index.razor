@@ -15,7 +15,7 @@
 <StatusMessage />
 
 <div class="row">
-    <div class="col-md-6">
+    <div class="col">
         <EditForm Model="Input" FormName="profile" OnValidSubmit="OnValidSubmitAsync" method="post">
             <DataAnnotationsValidator />
 
@@ -28,8 +28,7 @@
             </div>
             <Button 
                 Type="ButtonType.Submit"
-                Color="ButtonColor.Primary"
-                Class="w-100">
+                Color="ButtonColor.Primary">
                     Сохранить
             </Button>
         </EditForm>

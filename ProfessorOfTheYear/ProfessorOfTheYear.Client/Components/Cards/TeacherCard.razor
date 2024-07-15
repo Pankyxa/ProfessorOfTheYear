@@ -22,6 +22,6 @@
 
     async Task ViewInfo(string Id)
     {
-        await Task.Run(() => navigate.NavigateTo($"/voting/category/teacher/{Id}"));
+        await Task.Run(() => navigate.NavigateTo($"/voting/category/teacher/{Id}#start"));
     }
 }
