@@ -38,8 +38,9 @@
             <InputText @bind-Value="@email" class="form-control" placeholder="Электронная почта" disabled />
             <Button 
                 Type="ButtonType.Submit"
-                Color="ButtonColor.Primary">
-                    Изменить адрес электронной почты
+                Color="ButtonColor.Link">
+                form="send-verification-form">
+                    Отправить подтверждение на электронную почты
             </Button>
         </div>
     }
