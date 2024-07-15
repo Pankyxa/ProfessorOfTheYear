@@ -12,10 +12,11 @@
 
 <PageTitle>Настройте внешний вход в свой аккаунт</PageTitle>
 
-<StatusMessage />
 @if (currentLogins?.Count > 0)
 {
     <h3>Аккаунты для входа</h3>
+    <StatusMessage />
+
     <table class="table">
         <tbody>
             @foreach (var login in currentLogins)
@@ -47,6 +48,8 @@
 @if (otherLogins?.Count > 0)
 {
     <h4>Add another service to log in.</h4>
+    <StatusMessage />
+
     <hr />
     <form class="form-horizontal" action="Account/Manage/LinkExternalLogin" method="post">
         <AntiforgeryToken />

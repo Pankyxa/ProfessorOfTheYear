@@ -1,0 +1,124 @@
+﻿@page "/form/scientific-exp"
+
+@inject NavigationManager NavigationManager
+
+@rendermode InteractiveAuto
+
+@attribute [Authorize]
+
+<PageTitle>Форма заполнения заявки</PageTitle>
+
+<div class="block-group">
+    <div class="block">
+        <div class="block-title">
+            <div class="block-title-text">
+                Заполните заявку
+            </div>
+        </div>
+
+        <EditForm EditContext="@editContext" OnValidSubmit="HandleOnValidSubmit" class="w-100">
+            <DataAnnotationsValidator />
+
+            <div class="block-content block-content-border">
+                <div class="block-subtitle-text">
+                    Научно-педагогическая деятельность
+                </div>
+
+                <div class="block-content-text">Направление конкурса <span class="text-danger">*</span></div>
+                <div class="form-input w-100 mb-3">
+                    <ValidationMessage For="@(() => invoice.DirectionCompetition)" />
+                    <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.DirectionCompetition">
+                        <option hidden selected value="0">Выберите направление конкурса</option>
+                        <option value="1">АРХИТЕКТУРА</option>
+                        <option value="2">ТЕХНИКА И ТЕХНОЛОГИИ СТРОИТЕЛЬСТВА</option>
+                        <option value="3">СТРОИТЕЛЬСТВО И АРХИТЕКТУРА</option>
+                        <option value="4">ЭЛЕКТРО - И ТЕПЛОЭНЕРГЕТИКА</option>
+                        <option value="5">ЯДЕРНАЯ ЭНЕРГЕТИКА И ТЕХНОЛОГИИ</option>
+                        <option value="6">ЭНЕРГЕТИКА И ЭЛЕКТРОТЕХНИКА</option>
+                    </InputSelect>
+                </div>
+
+                <div class="block-content-text">Категорию участника конкурса <span class="text-danger">*</span></div>
+                <div class="form-input w-100 mb-3">
+                    <ValidationMessage For="@(() => invoice.CategoryCompetition)" />
+                    <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.CategoryCompetition">
+                        <option hidden selected value="0">Выберите категорию участника конкурса</option>
+                        <option value="1">
+                            аспиранты, адъюнкты, ординаторы, ассистенты-стажеры и работники высших учебных заведений, отраслевых и академических институтов, 
+                            работники сектора промышленности (исследователи), не имеющие ученой степени
+                        </option>
+                        <option value="2">
+                            докторанты и работники высших учебных заведений, отраслевых и академических институтов, 
+                            работники сектора промышленности (исследователи), имеющие ученую степень кандидата наук
+                        </option>
+                        <option value="3">
+                            работники высших учебных заведений, отраслевых и академических институтов, 
+                            работники сектора промышленности (исследователи), имеющие ученую степень доктора наук 
+                        </option>
+                    </InputSelect>
+                </div>
+
+                <div class="block-content-text">Ученое звание <span class="text-danger">*</span></div>
+                <div class="form-input w-100 mb-3">
+                    <ValidationMessage For="@(() => invoice.ScientificTitle)" />
+                    <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.ScientificTitle">
+                        <option hidden selected value="0">Выберите ученое звание:</option>
+                        <option value="1">Нет</option>
+                        <option value="2">Доцент</option>
+                        <option value="3">Профессор</option>
+                    </InputSelect>
+                </div>
+
+                <div class="block-content-text">Ученая степень <span class="text-danger">*</span></div>
+                <div class="form-input w-100 mb-3">
+                    <ValidationMessage For="@(() => invoice.ScientificDegree)" />
+                    <InputText class="form-control" @bind-Value="invoice.ScientificDegree" Placeholder="Введите ученую степень" />
+                </div>
+
+                <div class="block-content-text">Научная специальность (по классификации ВАК) <span class="text-danger">*</span></div>
+                <div class="form-input w-100 mb-3">
+                    <ValidationMessage For="@(() => invoice.ScientificSpecialty)" />
+                    <InputText class="form-control" @bind-Value="invoice.ScientificSpecialty" Placeholder="Введите научную специальность" />
+                </div>
+
+                <div class="block-content-text">Стаж научно-педагогической деятельности по трудовой книжке <span class="text-danger">*</span></div>
+                <div class="form-input w-100 mb-3">
+                    <ValidationMessage For="@(() => invoice.TeachingExperience)" />
+                    <InputText class="form-control" @bind-Value="invoice.TeachingExperience" Placeholder="Введите стаж научно-педагогической деятельности" />
+                </div>
+            </div>
+
+            <div class="d-flex flex-row gap-2 mt-2 mb-2 justify-content-center">
+                <Button @onclick="Comeback"
+                        Color="ButtonColor.Secondary">
+                    Вернуться назад
+                </Button>
+                <Button Type="ButtonType.Submit"
+                        Color="ButtonColor.Primary">
+                    Продолжить
+                </Button>
+            </div>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+    private DataTeachingDTO.ScientificInformation invoice = new();
+    private EditContext? editContext;
+
+    protected override void OnInitialized()
+    {
+        editContext = new EditContext(invoice);
+        base.OnInitialized();
+    }
+
+    public void HandleOnValidSubmit()
+    {
+        NavigationManager.NavigateTo("/form/leadership-activity");
+    }
+
+    public void Comeback()
+    {
+        NavigationManager.NavigateTo("/form/base-info");
+    }
+}

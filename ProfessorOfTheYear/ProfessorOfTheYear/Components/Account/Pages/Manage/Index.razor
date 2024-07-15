@@ -14,26 +14,22 @@
 <h3>Профиль</h3>
 <StatusMessage />
 
-<div class="row">
-    <div class="col">
-        <EditForm Model="Input" FormName="profile" OnValidSubmit="OnValidSubmitAsync" method="post">
-            <DataAnnotationsValidator />
+<EditForm Model="Input" FormName="profile" OnValidSubmit="OnValidSubmitAsync" method="post">
+    <DataAnnotationsValidator />
 
-            <div class="form-input mb-3">
-                <InputText @bind-Value="username" class="form-control" placeholder="Логин" disabled></InputText>
-            </div>
-            <div class="form-input mb-3">
-                <ValidationMessage For="() => Input.PhoneNumber" class="text-danger" />
-                <InputText @bind-Value="Input.PhoneNumber" class="form-control" placeholder="Номер телефона" />
-            </div>
-            <Button 
-                Type="ButtonType.Submit"
-                Color="ButtonColor.Primary">
-                    Сохранить
-            </Button>
-        </EditForm>
+    <div class="form-input mb-3">
+        <InputText @bind-Value="username" class="form-control" placeholder="Логин" disabled></InputText>
     </div>
-</div>
+    <div class="form-input mb-3">
+        <ValidationMessage For="() => Input.PhoneNumber" class="text-danger" />
+        <InputText @bind-Value="Input.PhoneNumber" class="form-control" placeholder="Номер телефона" />
+    </div>
+    <Button 
+        Type="ButtonType.Submit"
+        Color="ButtonColor.Primary">
+            Сохранить
+    </Button>
+</EditForm>
 
 @code {
     private ApplicationUser user = default!;
