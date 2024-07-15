@@ -24,7 +24,7 @@
                     Научно-педагогическая деятельность
                 </div>
 
-                <div class="block-content-text">Направление конкурса:</div>
+                <div class="block-content-text">Направление конкурса <span class="text-danger">*</span></div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.DirectionCompetition)" />
                     <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.DirectionCompetition">
@@ -38,7 +38,7 @@
                     </InputSelect>
                 </div>
 
-                <div class="block-content-text">Категорию участника конкурса:</div>
+                <div class="block-content-text">Категорию участника конкурса <span class="text-danger">*</span></div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.CategoryCompetition)" />
                     <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.CategoryCompetition">
@@ -58,7 +58,7 @@
                     </InputSelect>
                 </div>
 
-                <div class="block-content-text">Ученое звание:</div>
+                <div class="block-content-text">Ученое звание <span class="text-danger">*</span></div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.ScientificTitle)" />
                     <InputSelect class="form-control" style="white-space: normal" @bind-Value="invoice.ScientificTitle">
@@ -69,19 +69,19 @@
                     </InputSelect>
                 </div>
 
-                <div class="block-content-text">Ученая степень:</div>
+                <div class="block-content-text">Ученая степень <span class="text-danger">*</span></div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.ScientificDegree)" />
                     <InputText class="form-control" @bind-Value="invoice.ScientificDegree" Placeholder="Введите ученую степень" />
                 </div>
 
-                <div class="block-content-text">Научная специальность (по классификации ВАК):</div>
+                <div class="block-content-text">Научная специальность (по классификации ВАК) <span class="text-danger">*</span></div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.ScientificSpecialty)" />
                     <InputText class="form-control" @bind-Value="invoice.ScientificSpecialty" Placeholder="Введите научную специальность" />
                 </div>
 
-                <div class="block-content-text">Стаж научно-педагогической деятельности по трудовой книжке:</div>
+                <div class="block-content-text">Стаж научно-педагогической деятельности по трудовой книжке <span class="text-danger">*</span></div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.TeachingExperience)" />
                     <InputText class="form-control" @bind-Value="invoice.TeachingExperience" Placeholder="Введите стаж научно-педагогической деятельности" />

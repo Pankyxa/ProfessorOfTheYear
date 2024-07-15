@@ -25,14 +25,14 @@
     </p>
 </div>
 <div>
-    <EditForm FormName="reset-authenticator" OnValidSubmit="OnSubmitAsync" method="post">
+    <form @formname="reset-authenticator" @onsubmit="OnSubmitAsync" method="post">
         <AntiforgeryToken />
         <Button 
             Type="ButtonType.Submit"
             Color="ButtonColor.Danger">
                 Сбросить ключ
         </Button>
-    </EditForm>
+    </form>
 </div>
 
 @code {

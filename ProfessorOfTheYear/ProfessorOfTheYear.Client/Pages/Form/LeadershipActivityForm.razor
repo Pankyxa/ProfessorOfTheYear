@@ -24,22 +24,22 @@
                     Руководство дипломными проектами за предыдущий учебный год
                 </div>
 
-                <div class="block-content-text">Защитившиеся бакалавры:</div>
+                <div class="block-content-text">Защитившиеся бакалавры</div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.BachelorscCount)" />
-                    <InputNumber class="form-control" @bind-Value="invoice.BachelorscCount" Placeholder="Введите количество" />
+                    <InputNumber EnableMinMax="true" Min="0" class="form-control" @bind-Value="invoice.BachelorscCount" Placeholder="Введите количество" />
                 </div>
 
-                <div class="block-content-text">Защитившиеся специалисты:</div>
+                <div class="block-content-text">Защитившиеся специалисты</div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.SpecialistsCount)" />
-                    <InputNumber class="form-control" @bind-Value="invoice.SpecialistsCount" Placeholder="Введите количество" />
+                    <InputNumber EnableMinMax="true" Min="0" class="form-control" @bind-Value="invoice.SpecialistsCount" Placeholder="Введите количество" />
                 </div>
 
-                <div class="block-content-text">Защитившиеся магистры:</div>
+                <div class="block-content-text">Защитившиеся магистры</div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.MastersCount)" />
-                    <InputNumber class="form-control" @bind-Value="invoice.MastersCount" Placeholder="Введите количество" />
+                    <InputNumber EnableMinMax="true" Min="0" class="form-control" @bind-Value="invoice.MastersCount" Placeholder="Введите количество" />
                 </div>
 
                 <Studyload />
@@ -50,16 +50,16 @@
                     Список подготовленных под руководством участника конкурса аспирантов (докторантов) за последние пять лет научно-педагогической деятельности
                 </div>
 
-                <div class="block-content-text">Количество защитившихся кандидатов наук:</div>
+                <div class="block-content-text">Количество защитившихся кандидатов наук</div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.CandidatesOfSciencesCount)" />
-                    <InputNumber class="form-control" @bind-Value="invoice.CandidatesOfSciencesCount" Placeholder="Введите количество" />
+                    <InputNumber EnableMinMax="true" Min="0" class="form-control" @bind-Value="invoice.CandidatesOfSciencesCount" Placeholder="Введите количество" />
                 </div>
 
-                <div class="block-content-text">Количество защитившихся докторов наук:</div>
+                <div class="block-content-text">Количество защитившихся докторов наук</div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => invoice.DoctorsOfSciencesCount)" />
-                    <InputNumber class="form-control" @bind-Value="invoice.DoctorsOfSciencesCount" Placeholder="Введите количество" />
+                    <InputNumber EnableMinMax="true" Min="0" class="form-control" @bind-Value="invoice.DoctorsOfSciencesCount" Placeholder="Введите количество" />
                 </div>
 
                 <Studentlist />

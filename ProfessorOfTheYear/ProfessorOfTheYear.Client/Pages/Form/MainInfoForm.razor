@@ -25,49 +25,49 @@
                     Основная информация
                 </div>
 
-                <div class="block-content-text">ФИО:</div>
+                <div class="block-content-text">ФИО <span class="text-danger">*</span></div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => baseInformation!.FullName)" />
                     <InputText class="form-control" @bind-Value="baseInformation!.FullName" Placeholder="Введите ФИО" />
                 </div>
 
-                <div class="block-content-text">Дата рождения:</div>
+                <div class="block-content-text">Дата рождения <span class="text-danger">*</span></div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => baseInformation.InvoiceDate)" />
                     <DateInput TValue="DateOnly?" @bind-Value="baseInformation.InvoiceDate" />
                 </div>
 
-                <div class="block-content-text">Домашний адрес:</div>
+                <div class="block-content-text">Домашний адрес <span class="text-danger">*</span></div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => baseInformation.HomeAdress)" />
                     <InputText class="form-control" @bind-Value="baseInformation.HomeAdress" Placeholder="Введите домашний адрес" />
                 </div>
 
-                <div class="block-content-text">Контактный телефон:</div>
+                <div class="block-content-text">Контактный телефон <span class="text-danger">*</span></div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => baseInformation.PhoneNumber)" />
                     <InputText class="form-control" @bind-Value="baseInformation.PhoneNumber" Placeholder="Введите контактный телефон" />
                 </div>
 
-                <div class="block-content-text">Место работы/учебы:</div>
+                <div class="block-content-text">Место работы/учебы <span class="text-danger">*</span></div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => baseInformation.PlaceWork)" />
                     <InputText class="form-control" @bind-Value="baseInformation.PlaceWork" Placeholder="Введите место работы/учебы" />
                 </div>
 
-                <div class="block-content-text">Полное название вашей работы:</div>
+                <div class="block-content-text">Полное название вашей работы <span class="text-danger">*</span></div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => baseInformation.NameWork)" />
                     <InputText class="form-control" @bind-Value="baseInformation.NameWork" Placeholder="Введите полное название вашей работы" />
                 </div>
 
-                <div class="block-content-text">Должность:</div>
+                <div class="block-content-text">Должность <span class="text-danger">*</span></div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => baseInformation.Post)" />
                     <InputText class="form-control" @bind-Value="baseInformation.Post" Placeholder="Введите должность" />
                 </div>
 
-                <div class="block-content-text">Стаж работы:</div>
+                <div class="block-content-text">Стаж работы <span class="text-danger">*</span></div>
                 <div class="form-input w-100 mb-3">
                     <ValidationMessage For="@(() => baseInformation.WorkExperience)" />
                     <InputText class="form-control" @bind-Value="baseInformation.WorkExperience" Placeholder="Введите стаж работы" />
