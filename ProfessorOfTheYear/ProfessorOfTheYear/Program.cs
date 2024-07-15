@@ -9,6 +9,12 @@ using ProfessorOfTheYear.Client.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Настройка Kestrel для прослушивания на порту 80 внутри контейнера
+builder.WebHost.UseKestrel(options =>
+{
+    options.ListenAnyIP(80);
+});
+
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents()
@@ -29,7 +35,7 @@ builder.Services.AddAuthentication(options =>
 
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
+    options.UseNpgsql(connectionString)); // Изменение на использование PostgreSQL
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
