@@ -21,53 +21,52 @@
 }
 else
 {
-    <StatusMessage Message="@message" />
     <h3>Настройка приложения-аутентификатора</h3>
-    <div>
-        <p>Чтобы использовать приложение для проверки подлинности, выполните следующие действия:</p>
-        <ol class="list">
-            <li>
-                <p>
-                    Загрузите приложение для двухфакторной аутентификации, такое как Microsoft Authenticator, для
-                    <a href="https://go.microsoft.com/fwlink/?Linkid=825072">Android</a> и
-                    <a href="https://go.microsoft.com/fwlink/?Linkid=825073">iOS</a> или
-                    Google Authenticator для
-                    <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&amp;hl=en">Android</a> и
-                    <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8">iOS</a>.
-                </p>
-            </li>
-            <li>
-                <p>Отсканируйте QR-код или введите этот ключ <kbd>@sharedKey</kbd> в свое приложение для двухфакторной аутентификации. Пробелы и начертание не имеют значения.</p>
-                <div class="alert alert-info">Learn how to <a href="https://go.microsoft.com/fwlink/?Linkid=852423">enable QR code generation</a>.</div>
-                <div></div>
-                <div data-url="@authenticatorUri"></div>
-            </li>
-            <li>
-                <p>
-                    Как только вы отсканируете QR-код или введете указанный выше ключ, 
-                    приложение для двухфакторной аутентификации предоставит вам уникальный код. Введите код в поле подтверждения ниже.
-                </p>
-                <div class="row">
-                    <div class="col">
-                        <EditForm Model="Input" FormName="send-code" OnValidSubmit="OnValidSubmitAsync" method="post">
-                            <DataAnnotationsValidator />
-                            <div class="form-input mb-3">
-                                <ValidationMessage For="() => Input.Code" class="text-danger" />
-                                <InputText @bind-Value="Input.Code" class="form-control" autocomplete="off" placeholder="Код подтверждения" />
-                            </div>
-                            <Button 
-                                Type="ButtonType.Submit"
-                                Color="ButtonColor.Primary">
-                                    Подтвердить
-                            </Button>
+    <StatusMessage Message="@message" />
 
-                            <ValidationSummary class="text-danger" role="alert" />
-                        </EditForm>
-                    </div>
+    <p>Чтобы использовать приложение для проверки подлинности, выполните следующие действия:</p>
+    <ol class="list">
+        <li>
+            <p>
+                Загрузите приложение для двухфакторной аутентификации, такое как Microsoft Authenticator, для
+                <a href="https://go.microsoft.com/fwlink/?Linkid=825072">Android</a> и
+                <a href="https://go.microsoft.com/fwlink/?Linkid=825073">iOS</a> или
+                Google Authenticator для
+                <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&amp;hl=en">Android</a> и
+                <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8">iOS</a>.
+            </p>
+        </li>
+        <li>
+            <p>Отсканируйте QR-код или введите этот ключ <kbd>@sharedKey</kbd> в свое приложение для двухфакторной аутентификации. Пробелы и начертание не имеют значения.</p>
+            <div class="alert alert-info">Learn how to <a href="https://go.microsoft.com/fwlink/?Linkid=852423">enable QR code generation</a>.</div>
+            <div></div>
+            <div data-url="@authenticatorUri"></div>
+        </li>
+        <li>
+            <p>
+                Как только вы отсканируете QR-код или введете указанный выше ключ, 
+                приложение для двухфакторной аутентификации предоставит вам уникальный код. Введите код в поле подтверждения ниже.
+            </p>
+            <div class="row">
+                <div class="col">
+                    <EditForm Model="Input" FormName="send-code" OnValidSubmit="OnValidSubmitAsync" method="post">
+                        <DataAnnotationsValidator />
+                        <div class="form-input mb-3">
+                            <ValidationMessage For="() => Input.Code" class="text-danger" />
+                            <InputText @bind-Value="Input.Code" class="form-control" autocomplete="off" placeholder="Код подтверждения" />
+                        </div>
+                        <Button 
+                            Type="ButtonType.Submit"
+                            Color="ButtonColor.Primary">
+                                Подтвердить
+                        </Button>
+
+                        <ValidationSummary class="text-danger" role="alert" />
+                    </EditForm>
                 </div>
-            </li>
-        </ol>
-    </div>
+            </div>
+        </li>
+    </ol>
 }
 
 @code {

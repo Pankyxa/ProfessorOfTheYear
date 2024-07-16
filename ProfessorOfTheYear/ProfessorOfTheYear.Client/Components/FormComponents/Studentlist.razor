@@ -1,0 +1,138 @@
+﻿
+@*<input @bind="nameTextField" placeholder="Name" />
+<input type="number" @bind="valueTextField" placeholder="Value" />
+*@
+
+
+<style>
+    .adaptive-table {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .table-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .column-header {
+        font-weight: bold;
+        background-color: #f0f0f0;
+        padding: 5px;
+    }
+
+    .input-field {
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+
+</style>
+
+<div class="adaptive-table">
+    <div class="table-container">
+        <h6>Список подготовленных под руководством участника конкурса студентов, бакалавров, магистров/специалистов, аспирантов, адъюнктов, ординаторов, докторантов, получивших самостоятельное признание:</h6>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="column-header">ФИО</th>
+                    <th class="column-header">Название конкурса / премии</th>
+                    <th class="column-header">Год</th>
+                    <th class="column-header">Статус конкурса, награды</th>
+                    <th class="column-header">Награда / премия</th>
+                    <th class="column-header"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var model in models)
+                {
+                    <tr>
+                        <td><input @bind="model.StudentFullName" class="input-field" placeholder="ФИО" /></td>
+                        <td><input @bind="model.StudentNameCompetition" class="input-field" placeholder="название" /></td>
+                        <td><input @bind="model.StudentYear" class="input-field" placeholder="год" /></td>
+                        <td><input @bind="model.StudentStatusCompetition" class="input-field" placeholder="статус" /></td>
+                        <td><input @bind="model.StudentReward" class="input-field" placeholder="награда" /></td>
+                        <td>
+                            <Button Color="ButtonColor.Danger" @onclick="() => RemoveModel(model)">X</Button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="d-flex flex-row mb-2 gap-2">
+    <Button Color="ButtonColor.Primary" @onclick="AddOrUpdateModel"> Добавить </Button>
+    <Button Color="ButtonColor.Primary" @onclick="ShowModels"> Показать </Button>
+</div>
+
+<pre>@modelList</pre>
+
+@code {
+    private string nameTextField = "";
+    private string valueTextField = "";
+    private List<Model> models = new List<Model>
+    {
+        new Model { StudentFullName = "Имя1", StudentYear = 1999 },
+    };
+
+    private Model selectedModel = null;
+    private string modelList = "";
+
+    private void AddOrUpdateModel()
+    {
+        models.Add(new Model { StudentFullName = "Имя1", StudentYear = 1999 });
+        @*if (!string.IsNullOrEmpty(nameTextField) && !string.IsNullOrEmpty(valueTextField))
+        {
+            if (selectedModel == null)
+            {
+                models.Add(new Model { CourseName = nameTextField, Lectures = int.Parse(valueTextField) });
+            }
+            else
+            {
+                selectedModel.CourseName = nameTextField;
+                selectedModel.Lectures = int.Parse(valueTextField);
+                selectedModel = null;
+            }
+            ClearInputFields();
+        }*@
+    }
+
+    private void RemoveModel(Model model)
+    {
+        models.Remove(model);
+    }
+
+    private void EditModel(Model model)
+    {
+        selectedModel = model;
+        nameTextField = model.StudentFullName;
+        valueTextField = model.StudentYear.ToString();
+    }
+
+    private void ShowModels()
+    {
+        modelList = "Содержимое списка models:\n";
+        foreach (var model in models)
+        {
+            modelList += $"Name: {model.StudentFullName}, Value: {model.StudentYear}\n";
+        }
+    }
+
+    private void ClearInputFields()
+    {
+        nameTextField = "";
+        valueTextField = "";
+    }
+
+    public class Model
+    {
+        public string StudentFullName { get; set; }
+        public string StudentNameCompetition { get; set; }
+        public int StudentYear { get; set; }
+        public string StudentStatusCompetition { get; set; }
+        public int StudentReward { get; set; }
+    }
+}

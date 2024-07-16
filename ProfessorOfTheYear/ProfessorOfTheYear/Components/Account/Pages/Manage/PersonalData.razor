@@ -4,32 +4,28 @@
 
 <PageTitle>Персональные данные</PageTitle>
 
-<StatusMessage />
 <h3>Персональные данные</h3>
+<StatusMessage />
 
-<div class="row">
-    <div class="col">
-        <p>Ваша учетная запись содержит персональные данные, которые вы нам предоставили. На этой странице вы можете скачать или удалить эти данные.</p>
-        <p>
-            <strong>Удаление этих данных приведет к необратимому удалению вашей учетной записи, и восстановить ее будет невозможно.</strong>
-        </p>
-        <form action="Account/Manage/DownloadPersonalData" method="post">
-            <AntiforgeryToken />
+<p>Ваша учетная запись содержит персональные данные, которые вы нам предоставили. На этой странице вы можете скачать или удалить эти данные.</p>
+<p>
+    <strong>Удаление этих данных приведет к необратимому удалению вашей учетной записи, и восстановить ее будет невозможно.</strong>
+</p>
+<form action="Account/Manage/DownloadPersonalData" method="post">
+    <AntiforgeryToken />
 
-            <Button 
-                Type="ButtonType.Submit"
-                Color="ButtonColor.Primary">
-                    Скачать
-            </Button>
+    <Button 
+        Type="ButtonType.Submit"
+        Color="ButtonColor.Primary">
+            Скачать
+    </Button>
 
-            <Button Type="ButtonType.Link"
-                    Color="ButtonColor.Danger"
-                    To="Account/Manage/DeletePersonalData">
-                Удалить
-            </Button>
-        </form>
-    </div>
-</div>
+    <Button Type="ButtonType.Link"
+            Color="ButtonColor.Danger"
+            To="Account/Manage/DeletePersonalData">
+        Удалить
+    </Button>
+</form>
 
 @code {
     [CascadingParameter]
