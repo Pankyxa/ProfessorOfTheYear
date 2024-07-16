@@ -1,28 +1,37 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-ProfessorOfTheYear-087d45a9-d97a-434e-b1ae-1cbd4844ba28</UserSecretsId>
-    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <UserSecretsId>aspnet-ProfessorOfTheYear-087d45a9-d97a-434e-b1ae-1cbd4844ba28</UserSecretsId>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
-    <ProjectReference Include="..\ProfessorOfTheYear.Client\ProfessorOfTheYear.Client.csproj" />
-    <PackageReference Include="Blazor.Bootstrap" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.5" />
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.5" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.5" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+        <PackageReference Include="DotNetEnv" Version="3.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.5" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.5">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="Blazor.Bootstrap" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.5" />
+        <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.5" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.5" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.5" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.5">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <ProjectReference Include="..\ProfessorOfTheYear.Client\ProfessorOfTheYear.Client.csproj" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="..\..\.dockerignore">
-      <Link>.dockerignore</Link>
-    </Content>
-  </ItemGroup>
+    <ItemGroup>
+        <Content Include="..\..\.dockerignore">
+            <Link>.dockerignore</Link>
+        </Content>
+    </ItemGroup>
 
 </Project>
